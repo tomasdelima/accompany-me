@@ -4,12 +4,8 @@ Listing your friends
   <% current_user.friends.each do |f| %>
     <li><%= link_to f.name, user_friend_path(current_user, f) %></li>
   <% end %>
+  <li><%= link_to 'New friend', new_user_friend_path(current_user) %></li>
 </ul>
-
-<%= link_to 'New friend', new_user_friend_path(current_user) %>
-
-<br>
-<br>
 
 Listing all activities
 
@@ -17,5 +13,6 @@ Listing all activities
   <% Activity.all.each do |a| %>
     <li><%= link_to a.name, activity_path(a) %></li>
   <% end %>
+  <li><%= link_to 'New activity', new_activity_path %></li>
 </ul>
 

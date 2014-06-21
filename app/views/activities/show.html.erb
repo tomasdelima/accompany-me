@@ -1,6 +1,18 @@
 Name: <%= @activity.name %>
 <br><br>
 
+Organizer:
 <% if @activity.organizer %>
-  Organizer: <%= link_to @organizer.name, user_friend_path(current_user, @organizer) %>
+  <ul>
+    <li><%= link_to @organizer.name, user_friend_path(current_user, @organizer) %></li>
+  </ul>
 <% end %>
+
+Participants:
+<ul>
+  <% @activity.participants.each do |friend| %>
+    <li><%= link_to friend.name, user_friend_path(current_user, friend) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit activity', edit_activity_path %>
