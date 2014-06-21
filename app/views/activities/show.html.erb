@@ -1,0 +1,6 @@
+Name: <%= @activity.name %>
+<br><br>
+
+<% if @activity.organizer %>
+  Organizer: <%= link_to @organizer.name, user_friend_path(current_user, @organizer) %>
+<% end %>

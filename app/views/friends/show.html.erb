@@ -1,1 +1,17 @@
 Name: <%= @friend.name %>
+
+<br><br>
+
+Activities organizing:
+<ul>
+  <% Activity.where(organizer: @friend).each do |activity| %>
+    <li><%= link_to activity.name, activity_path(activity) %></li>
+  <% end %>
+</ul>
+
+Activities Participating:
+<ul>
+  <% @friend.activities.each do |activity| %>
+    <li><%= link_to activity.name, activity_path(activity) %></li>
+  <% end %>
+</ul>

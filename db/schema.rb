@@ -11,12 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621193144) do
+ActiveRecord::Schema.define(version: 20140621202534) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "participants_id"
+    t.integer  "organizer_id"
+  end
+
+  add_index "activities", ["organizer_id"], name: "index_activities_on_organizer_id"
+  add_index "activities", ["participants_id"], name: "index_activities_on_participants_id"
+
+  create_table "activities_friends", id: false, force: true do |t|
+    t.integer "activity_id"
+    t.integer "friend_id"
   end
 
   create_table "friends", force: true do |t|

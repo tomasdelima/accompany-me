@@ -7,3 +7,15 @@ Listing your friends
 </ul>
 
 <%= link_to 'New friend', new_user_friend_path(current_user) %>
+
+<br>
+<br>
+
+Listing all activities
+
+<ul>
+  <% Activity.all.each do |a| %>
+    <li><%= link_to a.name, activity_path(a) %></li>
+  <% end %>
+</ul>
+
