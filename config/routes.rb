@@ -7,7 +7,6 @@ AccompanyMe::Application.routes.draw do
   root 'users#show'
 
   resources :users do
-    # get '/friends/new' => 'users#new_friend'
     resources :friends
   end
 

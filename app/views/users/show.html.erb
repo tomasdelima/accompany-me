@@ -2,7 +2,7 @@ Listing your friends
 
 <ul>
   <% current_user.friends.each do |f| %>
-    <li><%= f.name %></li>
+    <li><%= link_to f.name, user_friend_path(current_user, f) %></li>
   <% end %>
 </ul>
 
