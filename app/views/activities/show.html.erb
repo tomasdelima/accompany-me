@@ -1,6 +1,15 @@
 Name: <%= @activity.name %>
 <br><br>
 
+Frequency: <%= @activity.frequency %>
+<br><br>
+
+Last occurrence: <%= @activity.last_occurrence.to_date %>
+<br><br>
+
+Next occurrence: <%= @activity.next_occurrence.to_date %> (in <%= (@activity.next_occurrence.to_date - Date.today).to_i %> days)
+<br><br>
+
 Organizer:
 <% if @activity.organizer %>
   <ul>
