@@ -1,0 +1,8 @@
+<%= form_for current_user do |uf| %>
+  <%= uf.fields_for :friends do |ff| %>
+    <%= ff.label :name %>
+    <%= ff.text_field :name %>
+  <% end %>
+
+  <%= uf.submit 'Add friend' %>
+<% end %>

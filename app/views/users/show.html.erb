@@ -1,0 +1,9 @@
+Listing your friends
+
+<ul>
+  <% current_user.friends.each do |f| %>
+    <li><%= f.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'New friend', new_user_friend_path(current_user) %>

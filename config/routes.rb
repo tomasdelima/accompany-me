@@ -4,7 +4,12 @@ AccompanyMe::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  root 'users#show'
+
+  resources :users do
+    # get '/friends/new' => 'users#new_friend'
+    resources :friends
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
