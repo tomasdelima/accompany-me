@@ -1,20 +1,39 @@
-<%= form_for activity do |af| %>
-  <%= af.label :name %>:
-  <%= af.text_field :name, autofocus: true %><br>
+<% content_for :page, 'edit activity' %>
 
-  <%= af.label :frequency %>:
-  <%= af.select :frequency, ['Daily','Weekly','Biweekly','Monthly','Yearly'], {include_blank: true}, {} %><br>
+<div class="col-md-10">
+  <div class="activities">
+    <%= form_for activity do |af| %>
+      <ul class="list-unstyled">
+        <li>
+          <%= af.label :name %>
+          <%= af.text_field :name, autofocus: true %>
+        </li>
 
-  <%= af.label :organizer %>:
-  <%= af.select :organizer_id, Friend.all.map{ |f| [f.name, f.id]}, {}, {} %><br>
+        <li>
+          <%= af.label :frequency %>
+          <%= af.select :frequency, ['Daily','Weekly','Biweekly','Monthly','Yearly'], {include_blank: true}, {} %>
+        </li>
 
-  <%= af.label :last_occurrence %>:
-  <%= af.datetime_select :last_occurrence, {include_blank: true} %><br>
 
-  <%= af.fields_for :friends do |ff| %>
-    <%= ff.label :friends %>:
-    <%= ff.select :friend_id, Friend.all.map{ |f| [f.name, f.id]}, {}, {multiple: true} %>
-  <% end %>
-  <br>
-  <%= af.submit %>
-<% end %>
+        <li>
+          <%= af.label :organizer %>
+          <%= af.select :organizer_id, Friend.all.map{ |f| [f.name, f.id]}, {}, {} %>
+        </li>
+
+        <li>
+          <%= af.label :last_occurrence %>
+          <%= af.datetime_select :last_occurrence, {include_blank: true} %>
+        </li>
+
+        <li>
+          <%= af.fields_for :friends do |ff| %>
+            <%= ff.label :friends %>
+            <%= ff.select :friend_id, Friend.all.map{ |f| [f.name, f.id]}, {}, {multiple: true} %>
+          <% end %>
+        </li>
+      </ul>
+
+      <%= af.submit class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

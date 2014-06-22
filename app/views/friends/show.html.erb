@@ -1,17 +1,25 @@
-Name: <%= @friend.name %>
+<% content_for :page, 'friend' %>
 
-<br><br>
 
-Activities organizing:
-<ul>
-  <% Activity.where(organizer: @friend).each do |activity| %>
-    <li><%= link_to activity.name, activity_path(activity) %></li>
-  <% end %>
-</ul>
+<div class="col-md-11">
+  <div class="friends">
+    <h2>Details of friend</h2>
 
-Activities Participating:
-<ul>
-  <% @friend.activities.each do |activity| %>
-    <li><%= link_to activity.name, activity_path(activity) %></li>
-  <% end %>
-</ul>
+    <ul class="list-unstyled">
+      <li><span>Name                </span><%= @friend.name %></li>
+      <li><span>Activities organizing</span>
+        <% Activity.where(organizer: @friend).each do |activity| %>
+          <%= link_to activity.name, activity_path(activity) %>
+        <% end %>
+      </li>
+
+      <li><span>Activities participating</span>
+        <% @friend.activities.each do |activity| %>
+          <%= link_to activity.name, activity_path(activity) %>
+        <% end %>
+      </li>
+    </ul>
+
+    <%= link_to 'Edit friend', edit_user_friend_path(current_user, @friend), class: 'btn btn-primary' %>
+  </div>
+</div>

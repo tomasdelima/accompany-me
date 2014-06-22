@@ -1,3 +1,73 @@
-// Place all the styles related to the User controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  .navbar {
+    background: aliceblue;
+    padding: 10px;
+    margin: 0;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 20px 20px;
+
+    .navbar-brand {
+      font-size: 25px;
+      padding: 10px;
+      height: auto;
+          color: #563d7c
+    }
+  }
+
+  .user, .activity, .friend {
+    padding: 30px 15px;
+
+    .col-md-6 {
+      margin-bottom: 15px;
+    }
+
+    .friends, .activities {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+
+      padding: 12px;
+
+      h2 {
+        font-size: 20px;
+        top: -14px;
+        position: absolute;
+        background: #fff;
+        line-height: normal;
+        margin: 0;
+      }
+
+      ul {
+        margin: 0;
+      }
+
+      li {
+        line-height: 20px;
+        border: 1px solid #a6bddc;
+        margin: 5px;
+        border-radius: 4px;
+        background: #fbfdff;
+        min-height: 32px;
+
+        a {
+          padding: 5px;
+          display: block;
+          color: #563d7c;
+          // text-decoration: none;
+        }
+
+        &:hover {
+          box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.05);
+        }
+      }
+
+      button {
+        margin: 0 5px;
+
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

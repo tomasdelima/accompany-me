@@ -10,6 +10,8 @@ AccompanyMe::Application.routes.draw do
     resources :friends
   end
 
+  resources :friends
+
   resources :activities
 
   # Example of regular route:

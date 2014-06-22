@@ -1,27 +1,23 @@
-Name: <%= @activity.name %>
-<br><br>
+<% content_for :page, 'activity' %>
 
-Frequency: <%= @activity.frequency %>
-<br><br>
 
-Last occurrence: <%= @activity.last_occurrence.to_date %>
-<br><br>
+<div class="col-md-10">
+  <div class="activities">
+    <h2>Details of activity</h2>
 
-Next occurrence: <%= @activity.next_occurrence.to_date %> (in <%= (@activity.next_occurrence.to_date - Date.today).to_i %> days)
-<br><br>
+    <ul class="list-unstyled">
+      <li><span>Name           </span><%= @activity.name %></li>
+      <li><span>Frequency      </span><%= @activity.frequency %></li>
+      <li><span>Last occurrence</span><%= @activity.last_occurrence.to_date %></li>
+      <li><span>Next occurrence</span><%= @activity.next_occurrence.to_date %> (in <%= (@activity.next_occurrence.to_date - Date.today).to_i %> days)</li>
+      <li><span>Organizer      </span><%= link_to @activity.organizer.name, user_friend_path(current_user, @activity.organizer) %></li>
+      <li><span>Participants   </span>
+        <% @activity.participants.map do |p| %>
+            <%= link_to p.name, user_friend_path(current_user, p) %>
+        <% end %>
+      </li>
+    </ul>
 
-Organizer:
-<% if @activity.organizer %>
-  <ul>
-    <li><%= link_to @organizer.name, user_friend_path(current_user, @organizer) %></li>
-  </ul>
-<% end %>
-
-Participants:
-<ul>
-  <% @activity.participants.each do |friend| %>
-    <li><%= link_to friend.name, user_friend_path(current_user, friend) %></li>
-  <% end %>
-</ul>
-
-<%= link_to 'Edit activity', edit_activity_path %>
+    <%= link_to 'Edit activity', edit_activity_path, class: 'btn btn-primary' %>
+  </div>
+</div>

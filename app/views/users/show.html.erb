@@ -1,18 +1,28 @@
-Listing your friends
+<% content_for :page, 'user' %>
 
-<ul>
-  <% current_user.friends.each do |f| %>
-    <li><%= link_to f.name, user_friend_path(current_user, f) %></li>
-  <% end %>
-  <li><%= link_to 'New friend', new_user_friend_path(current_user) %></li>
-</ul>
+<div class="col-md-6">
+  <div class="friends">
+    <h2>Friends</h2>
 
-Listing all activities
+    <ul class="list-unstyled">
+      <% current_user.friends.each do |f| %>
+        <li><%= link_to f.name, user_friend_path(current_user, f) %></li>
+      <% end %>
+      <button class="btn btn-success"><%= link_to 'New friend', new_user_friend_path(current_user) %></button>
+    </ul>
+  </div>
+</div>
 
-<ul>
-  <% Activity.all.each do |a| %>
-    <li><%= link_to a.name, activity_path(a) %></li>
-  <% end %>
-  <li><%= link_to 'New activity', new_activity_path %></li>
-</ul>
+<div class="col-md-6">
+  <div class="activities">
+    <h2>Activities</h2>
+
+    <ul class="list-unstyled">
+      <% Activity.all.each do |a| %>
+        <li><%= link_to a.name, activity_path(a) %></li>
+      <% end %>
+      <button class="btn btn-success"><%= link_to 'New activity', new_activity_path %></button>
+    </ul>
+  </div>
+</div>
 

@@ -1,0 +1,16 @@
+<% content_for :page, 'edit friend' %>
+
+<div class="col-md-10">
+  <div class="friends">
+    <%= form_for @friend do |uf| %>
+      <ul class="list-unstyled">
+        <li>
+            <%= uf.label :name %>
+            <%= uf.text_field :name, autofocus: true %>
+        </li>
+      </ul>
+
+      <%= uf.submit class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>
