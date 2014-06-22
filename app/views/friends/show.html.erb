@@ -6,17 +6,26 @@
     <h2>Details of friend</h2>
 
     <ul class="list-unstyled">
-      <li><span>Name                </span><%= @friend.name %></li>
-      <li><span>Activities organizing</span>
-        <% Activity.where(organizer: @friend).each do |activity| %>
-          <%= link_to activity.name, activity_path(activity) %>
-        <% end %>
+      <li>
+        <span>Name</span>
+        <div><%= @friend.name %></div>
+      </li>
+      <li>
+        <span>Activities organizing</span>
+        <div>
+          <% Activity.where(organizer: @friend).each do |activity| %>
+            <%= link_to activity.name, activity_path(activity) %>
+          <% end %>
+        </div>
       </li>
 
-      <li><span>Activities participating</span>
-        <% @friend.activities.each do |activity| %>
-          <%= link_to activity.name, activity_path(activity) %>
-        <% end %>
+      <li>
+        <span>Activities participating</span>
+        <div>
+          <% @friend.activities.each do |activity| %>
+            <%= link_to activity.name, activity_path(activity) %>
+          <% end %>
+        </div>
       </li>
     </ul>
 
