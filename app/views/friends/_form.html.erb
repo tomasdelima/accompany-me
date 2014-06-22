@@ -2,19 +2,25 @@
 
 <div class="col-md-10">
   <div class="friends">
-    <%= form_for @friend do |uf| %>
+    <%= form_for @friend do |f| %>
       <ul class="list-unstyled">
         <li>
-            <%= uf.label :name %>
-            <%= uf.text_field :name, autofocus: true %>
+          <%= f.label :name %>
+          <%= f.text_field :name, autofocus: true %>
         </li>
+
         <li>
-            <%= uf.label :declared? %>
-            <%= uf.check_box :declared, autofocus: true %>
+          <%= f.label :declared? %>
+          <%= f.check_box :declared, autofocus: true %>
+        </li>
+
+        <li>
+          <%= f.label :last_accompanied %>
+          <%= f.date_select :last_accompanied, {include_blank: true} %>
         </li>
       </ul>
 
-      <%= uf.submit class: 'btn btn-success' %>
+      <%= f.submit class: 'btn btn-success' %>
     <% end %>
   </div>
 </div>

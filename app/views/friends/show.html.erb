@@ -13,8 +13,14 @@
       <li>
         <span>Declared</span>
         <div>
-          <% @friend.declared? %>
           <i class="icon <%= @friend.declared ? 'icon-ok' : 'icon-remove' %>"></i>
+        </div>
+      </li>
+      <li>
+        <span>Last accompanied</span>
+        <div>
+          <%= @friend.last_accompanied %>
+          <%= @friend.since_last_accompanied %>
         </div>
       </li>
       <li>
