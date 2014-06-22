@@ -14,7 +14,6 @@
           <%= af.select :frequency, ['Daily','Weekly','Biweekly','Monthly','Yearly'], {include_blank: true}, {} %>
         </li>
 
-
         <li>
           <%= af.label :organizer %>
           <%= af.select :organizer_id, Friend.all.map{ |f| [f.name, f.id]}, {}, {} %>

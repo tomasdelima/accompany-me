@@ -13,4 +13,11 @@ class Activity < ActiveRecord::Base
       end
     end
   end
+
+  def until_next_occurrence
+    if next_occurrence
+      d = (next_occurrence.to_date - Date.today).to_i
+      "(in #{d} day#{'s' if d > 1})"
+    end
+  end
 end

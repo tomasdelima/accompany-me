@@ -55,10 +55,10 @@ class ActivitiesController < ApplicationController
     end
 
     @activity.update_attributes(
-      name: pa[:name],
-      frequency: pa[:frequency],
+      name:            pa[:name],
+      frequency:       pa[:frequency],
       last_occurrence: last_occurrence,
-      organizer: @organizer
-      )
+      organizer:       @organizer
+    )
   end
 end

@@ -20,7 +20,10 @@
       </li>
       <li>
         <span>Next occurrence</span>
-        <div><%= @activity.next_occurrence.to_date %> (in <%= (@activity.next_occurrence.to_date - Date.today).to_i %> days)</div>
+        <div>
+          <%= @activity.next_occurrence.to_date %>
+          <%= @activity.until_next_occurrence %>
+        </div>
       </li>
       <li><span>Organizer</span>
         <div><%= link_to @activity.organizer.name, user_friend_path(current_user, @activity.organizer) %></div>
