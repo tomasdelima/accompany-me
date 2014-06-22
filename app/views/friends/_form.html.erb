@@ -8,6 +8,10 @@
             <%= uf.label :name %>
             <%= uf.text_field :name, autofocus: true %>
         </li>
+        <li>
+            <%= uf.label :declared? %>
+            <%= uf.check_box :declared, autofocus: true %>
+        </li>
       </ul>
 
       <%= uf.submit class: 'btn btn-success' %>

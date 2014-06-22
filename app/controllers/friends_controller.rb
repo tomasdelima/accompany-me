@@ -11,7 +11,12 @@ class FriendsController < ApplicationController
   end
 
   def update
-    @friend.update_attributes(name: params[:friend][:name])
+    pf = params[:friend]
+
+    @friend.update_attributes(
+      name:     pf[:name],
+      declared: pf[:declared]
+    )
 
     redirect_to friend_path(@friend)
   end

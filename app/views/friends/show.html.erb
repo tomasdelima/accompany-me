@@ -11,6 +11,13 @@
         <div><%= @friend.name %></div>
       </li>
       <li>
+        <span>Declared</span>
+        <div>
+          <% @friend.declared? %>
+          <i class="icon <%= @friend.declared ? 'icon-ok' : 'icon-remove' %>"></i>
+        </div>
+      </li>
+      <li>
         <span>Activities organizing</span>
         <div>
           <% Activity.where(organizer: @friend).each do |activity| %>
