@@ -7,9 +7,14 @@ class FriendsController < ApplicationController
 
   def create
     @friend = Friend.new(user: current_user)
+    assign_activity_attributes
 
-    update_activity_attributes
-    redirect_to friend_path(@friend)
+    if @friend.save
+      redirect_to friend_path(@friend)
+    else
+      params[:errors] = @friend.errors.messages
+      render :edit
+    end
   end
 
   def show
@@ -19,9 +24,14 @@ class FriendsController < ApplicationController
   end
 
   def update
-    update_activity_attributes
+    assign_activity_attributes
 
-    redirect_to friend_path(@friend)
+    if @friend.save
+      redirect_to friend_path(@friend)
+    else
+      params[:errors] = @friend.errors.messages
+      render :edit
+    end
   end
 
   def destroy
@@ -38,7 +48,7 @@ class FriendsController < ApplicationController
     @friend = Friend.find(params[:id])
   end
 
-  def update_activity_attributes
+  def assign_activity_attributes
     pf = params[:friend]
 
     if pf["last_accompanied(1i)"].present? && pf["last_accompanied(2i)"].present? && pf["last_accompanied(3i)"].present?
@@ -49,7 +59,7 @@ class FriendsController < ApplicationController
       )
     end
 
-    @friend.update_attributes(
+    @friend.assign_attributes(
       name:             pf[:name],
       declared:         pf[:declared],
       last_accompanied: last_accompanied

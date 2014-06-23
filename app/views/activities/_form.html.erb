@@ -1,6 +1,13 @@
 <% content_for :page, 'edit activity' %>
 
 <div class="col-md-10">
+  <% params[:errors].try(:each) do |error| %>
+    <div class="alert alert-danger">
+      <a class="close" data-dismiss="alert" href="#">×</a>
+      <%= "<strong>#{error[0].capitalize}</strong>: #{error[1][0]}".html_safe %>
+    </div>
+  <% end %>
+
   <div class="activities">
     <%= form_for activity do |af| %>
       <ul class="list-unstyled">

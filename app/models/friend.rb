@@ -2,6 +2,8 @@ class Friend < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :activities
 
+  validates :name, presence: true
+
   def since_last_accompanied
     if last_accompanied
       d = (Date.today - last_accompanied).to_i

@@ -8,13 +8,18 @@ class ActivitiesController < ApplicationController
   def create
     @organizer = Friend.find(params[:activity][:organizer_id])
     @activity = Activity.new
-    update_activity_attributes
+    assign_activity_attributes
 
-    params[:activity][:friends][:friend_id].each do |friend_id|
-      @activity.participants << Friend.find(friend_id) if friend_id.present?
+    if @activity.save
+      params[:activity][:friends][:friend_id].each do |friend_id|
+        @activity.participants << Friend.find(friend_id) if friend_id.present?
+      end
+
+      redirect_to activity_path(@activity)
+    else
+      params[:errors] = @activity.errors.messages
+      render :edit
     end
-
-    redirect_to activity_path(@activity)
   end
 
   def show
@@ -26,7 +31,7 @@ class ActivitiesController < ApplicationController
 
   def update
     @organizer = Friend.find(params[:activity][:organizer_id])
-    update_activity_attributes
+    assign_activity_attributes
 
     @activity.participants = []
     params[:activity][:friends][:friend_id].each do |friend_id|
@@ -50,7 +55,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
   end
 
-  def update_activity_attributes
+  def assign_activity_attributes
     pa = params[:activity]
 
     if pa["last_occurrence(1i)"].present? && pa["last_occurrence(2i)"].present? && pa["last_occurrence(3i)"].present?
@@ -63,7 +68,7 @@ class ActivitiesController < ApplicationController
       )
     end
 
-    @activity.update_attributes(
+    @activity.assign_attributes(
       name:            pa[:name],
       frequency:       pa[:frequency],
       last_occurrence: last_occurrence,

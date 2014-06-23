@@ -1,6 +1,13 @@
 <% content_for :page, 'edit friend' %>
 
 <div class="col-md-10">
+  <% params[:errors].try(:each) do |error| %>
+    <div class="alert alert-danger">
+      <a class="close" data-dismiss="alert" href="#">×</a>
+      <%= "<strong>#{error[0].capitalize}</strong>: #{error[1][0]}".html_safe %>
+    </div>
+  <% end %>
+
   <div class="friends">
     <%= form_for @friend do |f| %>
       <ul class="list-unstyled">
