@@ -3,4 +3,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :friends
+  has_many :activities
 end

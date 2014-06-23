@@ -1,0 +1,42 @@
+
+<div class="col-md-11">
+  <div class="accompaniments">
+    <h2>Accompaniment: <%= accompaniment.subject %></h2>
+
+    <ul class="list-unstyled">
+      <% if @friend %>
+        <li>
+          <span>Activity</span>
+          <div><%= accompaniment.activity.name %></div>
+        </li>
+      <% end %>
+
+      <% if @activity %>
+        <li>
+          <span>Friend</span>
+          <div><%= accompaniment.friend.name %></div>
+        </li>
+      <% end %>
+
+      <li>
+        <span>Plans</span>
+        <div><%= accompaniment.plans %></div>
+      </li>
+
+      <li>
+        <span>Achievements</span>
+        <div><%= accompaniment.achievements %></div>
+      </li>
+
+      <li>
+        <span>Observations</span>
+        <div><%= accompaniment.observations %></div>
+      </li>
+
+      <li>
+        <span>Place</span>
+        <div><%= accompaniment.place %></div>
+      </li>
+    </ul>
+  </div>
+</div>

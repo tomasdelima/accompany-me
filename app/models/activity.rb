@@ -1,6 +1,9 @@
 class Activity < ActiveRecord::Base
+  belongs_to :user
+
   has_and_belongs_to_many :participants, class_name: "Friend"
   belongs_to :organizer, class_name: "Friend"
+  has_many :accompaniments
 
   validates :name, :organizer_id, presence: true
 

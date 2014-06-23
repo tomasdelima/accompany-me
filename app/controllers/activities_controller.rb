@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
 
   def create
     @organizer = Friend.find(params[:activity][:organizer_id])
-    @activity = Activity.new
+    @activity = Activity.new(user: current_user)
     assign_activity_attributes
 
     if @activity.save

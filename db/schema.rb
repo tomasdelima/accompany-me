@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622194323) do
+ActiveRecord::Schema.define(version: 20140623041427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accompaniments", force: true do |t|
+    t.integer  "activity_id"
+    t.integer  "friend_id"
+    t.datetime "date_time"
+    t.string   "place"
+    t.string   "subject"
+    t.text     "plans"
+    t.text     "achievements"
+    t.text     "observations"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accompaniments", ["activity_id"], name: "index_accompaniments_on_activity_id", using: :btree
+  add_index "accompaniments", ["friend_id"], name: "index_accompaniments_on_friend_id", using: :btree
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -24,10 +40,12 @@ ActiveRecord::Schema.define(version: 20140622194323) do
     t.integer  "organizer_id"
     t.string   "frequency"
     t.datetime "last_occurrence"
+    t.integer  "user_id"
   end
 
   add_index "activities", ["organizer_id"], name: "index_activities_on_organizer_id", using: :btree
   add_index "activities", ["participants_id"], name: "index_activities_on_participants_id", using: :btree
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "activities_friends", id: false, force: true do |t|
     t.integer "activity_id"

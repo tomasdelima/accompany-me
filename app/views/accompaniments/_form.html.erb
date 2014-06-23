@@ -1,0 +1,67 @@
+<% content_for :page, 'edit friend' %>
+
+<div class="col-md-10">
+  <% params[:errors].try(:each) do |error| %>
+    <div class="alert alert-danger">
+      <a class="close" data-dismiss="alert" href="#">×</a>
+      <%= "<strong>#{error[0].capitalize}</strong>: #{error[1][0]}".html_safe %>
+    </div>
+  <% end %>
+
+  <div class="friends accompaniment">
+    <h2>Accompanying <%= (@friend || @activity).name %></h2>
+
+    <%= form_for @accompaniment do |f| %>
+      <ul class="list-unstyled">
+        <li>
+          <%= f.label :subject %>
+          <%= f.text_field :subject, autofocus: true %>
+        </li>
+
+        <% if @friend %>
+          <%= f.hidden_field :friend_id, {value: @friend.id} %>
+
+          <li>
+            <%= f.label :activity %>
+            <%= f.select :activity_id, @friend.activities_organizing.map{ |f| [f.name, f.id]}, {}, {} %>
+          </li>
+        <% elsif @activity %>
+          <%= f.hidden_field :activity_id, {value: @activity.id} %>
+          <%= f.hidden_field :friend_id, {value: @activity.organizer.id} %>
+
+          <li>
+            <%= f.label :friend %>
+            <%= @activity.organizer.name %>
+          </li>
+        <% end %>
+
+        <li>
+          <%= f.label :plans %>
+          <%= f.text_field :plans %>
+        </li>
+
+        <li>
+          <%= f.label :achievements %>
+          <%= f.text_field :achievements %>
+        </li>
+
+        <li>
+          <%= f.label :observations %>
+          <%= f.text_area :observations %>
+        </li>
+
+        <li>
+          <%= f.label :place %>
+          <%= f.text_field :place %>
+        </li>
+
+        <li>
+          <%= f.label :date_time %>
+          <%= f.datetime_select :date_time, {include_blank: true} %>
+        </li>
+      </ul>
+
+      <%= f.submit class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

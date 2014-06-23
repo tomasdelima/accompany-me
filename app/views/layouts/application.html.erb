@@ -9,9 +9,12 @@
 </head>
 <body>
 
-
 <div class="navbar">
   <a href="/" class="navbar-brand">Accompany-me</a>
+
+  <div class="pull-right">
+    Welcome <%= current_user.try(:email) %>
+  </div>
 </div>
 
 <div class="container <%= content_for :page %>">

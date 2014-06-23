@@ -43,6 +43,11 @@
     </ul>
 
     <%= link_to 'Edit friend', edit_friend_path, class: 'btn btn-primary' %>
+    <%= link_to 'Accompany-me!', new_friend_accompaniment_path(@friend), class: 'btn btn-success' %>
     <%= link_to 'Delete friend', friend_path, method: :delete, class: 'btn btn-danger' %>
   </div>
 </div>
+
+<% @friend.accompaniments.each do |accompaniment| %>
+  <%= render 'accompaniments/accompaniments', accompaniment: accompaniment %>
+<% end %>
