@@ -16,17 +16,19 @@
       </li>
       <li>
         <span>Last occurrence</span>
-        <div><%= @activity.last_occurrence.to_date %></div>
+        <div><%= @activity.last_occurrence.try(:to_date) %></div>
       </li>
       <li>
         <span>Next occurrence</span>
         <div>
-          <%= @activity.next_occurrence.to_date %>
+          <%= @activity.next_occurrence.try(:to_date) %>
           <%= @activity.until_next_occurrence %>
         </div>
       </li>
       <li><span>Organizer</span>
-        <div><%= link_to @activity.organizer.name, user_friend_path(current_user, @activity.organizer) %></div>
+        <div>
+          <%= link_to @organizer.name, friend_path(@organizer) if @organizer %>
+        </div>
       </li>
       <li>
         <span>Participants</span>
@@ -39,5 +41,6 @@
     </ul>
 
     <%= link_to 'Edit activity', edit_activity_path, class: 'btn btn-primary' %>
+    <%= link_to 'Delete activity', activity_path, method: :delete, class: 'btn btn-danger' %>
   </div>
 </div>

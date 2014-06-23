@@ -1,8 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: [:show, :edit, :update]
-  def show
-    @organizer = @activity.organizer
-  end
+  before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
   def new
     @activity = Activity.new
@@ -20,6 +17,10 @@ class ActivitiesController < ApplicationController
     redirect_to activity_path(@activity)
   end
 
+  def show
+    @organizer = @activity.organizer
+  end
+
   def edit
   end
 
@@ -34,6 +35,14 @@ class ActivitiesController < ApplicationController
 
     redirect_to activity_path(@activity)
   end
+
+  def destroy
+    @activity.destroy
+
+    redirect_to user_path
+  end
+
+
 
   private
 

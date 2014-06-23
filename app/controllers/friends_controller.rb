@@ -1,5 +1,5 @@
 class FriendsController < ApplicationController
-  before_action :set_friend, only: [:show, :edit, :update]
+  before_action :set_friend, only: [:show, :edit, :update, :destroy]
 
   def new
     @friend = Friend.new
@@ -23,6 +23,14 @@ class FriendsController < ApplicationController
 
     redirect_to friend_path(@friend)
   end
+
+  def destroy
+    @friend.destroy
+
+    redirect_to user_path
+  end
+
+
 
   private
 
