@@ -2,6 +2,14 @@ class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :edit, :update]
 
   def new
+    @friend = Friend.new
+  end
+
+  def create
+    @friend = Friend.new(user: current_user)
+
+    update_activity_attributes
+    redirect_to friend_path(@friend)
   end
 
   def show
@@ -11,6 +19,18 @@ class FriendsController < ApplicationController
   end
 
   def update
+    update_activity_attributes
+
+    redirect_to friend_path(@friend)
+  end
+
+  private
+
+  def set_friend
+    @friend = Friend.find(params[:id])
+  end
+
+  def update_activity_attributes
     pf = params[:friend]
 
     if pf["last_accompanied(1i)"].present? && pf["last_accompanied(2i)"].present? && pf["last_accompanied(3i)"].present?
@@ -26,13 +46,5 @@ class FriendsController < ApplicationController
       declared:         pf[:declared],
       last_accompanied: last_accompanied
     )
-
-    redirect_to friend_path(@friend)
-  end
-
-  private
-
-  def set_friend
-    @friend = Friend.find(params[:id])
   end
 end
