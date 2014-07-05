@@ -33,6 +33,8 @@ class ActivitiesController < ApplicationController
     @organizer = Friend.find(params[:activity][:organizer_id])
     assign_activity_attributes
 
+    @activity.save
+
     @activity.participants = []
     params[:activity][:friends][:friend_id].each do |friend_id|
       @activity.participants << Friend.find(friend_id) if friend_id.present?

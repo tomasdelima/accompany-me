@@ -28,7 +28,7 @@
           <%= af.select :organizer_id, current_user.friends.map{ |f| [f.name, f.id]}, {}, {} %>
         </li>
 
-        <li>
+        <li class="date-time">
           <%= af.label :last_occurrence %>
           <%= af.datetime_select :last_occurrence, {include_blank: true} %>
         </li>

@@ -44,7 +44,7 @@
 
     <%= link_to 'Edit friend', edit_friend_path, class: 'btn btn-primary' %>
     <%= link_to 'Accompany-me!', new_friend_accompaniment_path(@friend), class: 'btn btn-success' %>
-    <%= link_to 'Delete friend', friend_path, method: :delete, class: 'btn btn-danger' %>
+    <%= link_to 'Delete friend', friend_path, method: :delete, confirm: "Are you sure? This will also delete related activities and accompaniments!", class: 'btn btn-danger' %>
   </div>
 </div>
 

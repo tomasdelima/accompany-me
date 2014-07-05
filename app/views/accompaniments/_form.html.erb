@@ -36,13 +36,13 @@
         <% end %>
 
         <li>
-          <%= f.label :plans %>
-          <%= f.text_field :plans %>
+          <%= f.label :achievements %>
+          <%= f.text_field :achievements %>
         </li>
 
         <li>
-          <%= f.label :achievements %>
-          <%= f.text_field :achievements %>
+          <%= f.label :plans %>
+          <%= f.text_field :plans %>
         </li>
 
         <li>
@@ -55,9 +55,9 @@
           <%= f.text_field :place %>
         </li>
 
-        <li>
+        <li class="date-time">
           <%= f.label :date_time %>
-          <%= f.datetime_select :date_time, {include_blank: true} %>
+          <%= f.datetime_select :date_time, default: DateTime.now %>
         </li>
       </ul>
 
