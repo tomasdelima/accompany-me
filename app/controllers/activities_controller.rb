@@ -10,10 +10,9 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(user: current_user)
     assign_activity_attributes
 
-    if @activity.save
-      params[:activity][:friends][:friend_id].each do |friend_id|
-        @activity.participants << Friend.find(friend_id) if friend_id.present?
-      end
+    if @activity.valid?
+      set_participants
+      @activity.save
 
       redirect_to activity_path(@activity)
     else
@@ -33,14 +32,15 @@ class ActivitiesController < ApplicationController
     @organizer = Friend.find(params[:activity][:organizer_id])
     assign_activity_attributes
 
-    @activity.save
+    if @activity.valid?
+      set_participants
+      @activity.save
 
-    @activity.participants = []
-    params[:activity][:friends][:friend_id].each do |friend_id|
-      @activity.participants << Friend.find(friend_id) if friend_id.present?
+      redirect_to activity_path(@activity)
+    else
+      params[:errors] = @activity.errors.messages
+      render :edit
     end
-
-    redirect_to activity_path(@activity)
   end
 
   def destroy
@@ -77,5 +77,9 @@ class ActivitiesController < ApplicationController
       accompaniment_frequency: pa[:accompaniment_frequency].to_i,
       organizer:               @organizer
     )
+  end
+
+  def set_participants
+    @activity.participant_ids = params[:activity][:participant_ids]
   end
 end

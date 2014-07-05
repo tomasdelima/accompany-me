@@ -1,18 +1,19 @@
 <% content_for :page, 'edit friend' %>
 
 <div class="col-md-10">
-  <% params[:errors].try(:each) do |error| %>
-    <div class="alert alert-danger">
-      <a class="close" data-dismiss="alert" href="#">×</a>
-      <%= "<strong>#{error[0].capitalize}</strong>: #{error[1][0]}".html_safe %>
-    </div>
-  <% end %>
 
   <div class="friends">
     <h2>Form for friend</h2>
 
+    <% params[:errors].try(:each) do |error| %>
+      <div class="alert alert-danger">
+        <a class="close" data-dismiss="alert" href="#">×</a>
+        <%= "<strong>#{error[0].capitalize}</strong>: #{error[1][0]}".html_safe %>
+      </div>
+    <% end %>
+
     <%= form_for @friend do |f| %>
-      <ul class="list-unstyled">
+      <ul class="list-unstyled details">
         <li>
           <%= f.label :name %>
           <%= f.text_field :name, autofocus: true %>
@@ -26,6 +27,12 @@
         <li>
           <%= f.label :last_accompanied %>
           <%= f.date_select :last_accompanied, {include_blank: true} %>
+        </li>
+
+        <li class="date-time">
+          <%= f.label :accompaniment_frequency %>
+          <%= f.number_field :accompaniment_frequency %>
+          days
         </li>
       </ul>
 

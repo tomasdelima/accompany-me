@@ -1,7 +1,9 @@
 .activity {
   .activities {
     ul {
-      margin-left: 110px !important;
+      &.details {
+        margin-left: 180px !important;
+      }
 
       li {
         padding: 5px;
@@ -30,6 +32,11 @@
         label {
           position: absolute;
           left: 30px;
+
+          &.sub-form {
+            position: initial;
+            display: initial;
+          }
         }
 
         input, select {

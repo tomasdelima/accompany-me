@@ -1,47 +1,59 @@
 <% content_for :page, 'edit activity' %>
 
 <div class="col-md-10">
-  <% params[:errors].try(:each) do |error| %>
-    <div class="alert alert-danger">
-      <a class="close" data-dismiss="alert" href="#">×</a>
-      <%= "<strong>#{error[0].capitalize}</strong>: #{error[1][0]}".html_safe %>
-    </div>
-  <% end %>
 
   <div class="activities">
     <h2>Form for activity</h2>
 
-    <%= form_for activity do |af| %>
-      <ul class="list-unstyled">
+    <% params[:errors].try(:each) do |error| %>
+      <div class="alert alert-danger">
+        <a class="close" data-dismiss="alert" href="#">×</a>
+        <%= "<strong>#{error[0].capitalize}</strong>: #{error[1][0]}".html_safe %>
+      </div>
+    <% end %>
+
+    <%= form_for activity do |f| %>
+      <ul class="list-unstyled details">
         <li>
-          <%= af.label :name %>
-          <%= af.text_field :name, autofocus: true %>
+          <%= f.label :name %>
+          <%= f.text_field :name, autofocus: true %>
         </li>
 
         <li>
-          <%= af.label :frequency %>
-          <%= af.select :frequency, ['Daily','Weekly','Biweekly','Monthly','Yearly'], {include_blank: true}, {} %>
+          <%= f.label :frequency %>
+          <%= f.select :frequency, ['Daily','Weekly','Biweekly','Monthly','Yearly'], {include_blank: true}, {} %>
         </li>
 
         <li>
-          <%= af.label :organizer %>
-          <%= af.select :organizer_id, current_user.friends.map{ |f| [f.name, f.id]}, {}, {} %>
+          <%= f.label :organizer %>
+          <%= f.select :organizer_id, current_user.friends.map{ |f| [f.name, f.id]}, {}, {} %>
         </li>
 
         <li class="date-time">
-          <%= af.label :last_occurrence %>
-          <%= af.datetime_select :last_occurrence, {include_blank: true} %>
+          <%= f.label :last_occurrence %>
+          <%= f.datetime_select :last_occurrence, {include_blank: true} %>
+        </li>
+
+        <li class="date-time">
+          <%= f.label :accompaniment_frequency %>
+          <%= f.number_field :accompaniment_frequency %>
+          days
         </li>
 
         <li>
-          <%= af.fields_for :friends do |ff| %>
-            <%= ff.label :friends %>
-            <%= ff.select :friend_id, current_user.friends.map{ |f| [f.name, f.id]}, {}, {multiple: true} %>
-          <% end %>
+          <%= f.label :participants %>
+          <ul class="list-unstyled">
+            <% current_user.friends.each do |fr| %>
+              <li>
+                <%= f.check_box :participant_ids, {multiple: true, checked: @activity.participant_ids.include?(fr.id.to_i)}, fr.id, nil %>
+                <%= f.label "participant_ids_#{fr.id}", fr.name, {class: 'sub-form'} %>
+              </li>
+            <% end %>
+          </ul>
         </li>
       </ul>
 
-      <%= af.submit class: 'btn btn-success' %>
+      <%= f.submit class: 'btn btn-success' %>
     <% end %>
   </div>
 </div>
