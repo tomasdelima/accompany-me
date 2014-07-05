@@ -3,20 +3,25 @@
   <div class="accompaniments">
     <h2>Accompaniment: <%= accompaniment.subject %></h2>
 
-    <ul class="list-unstyled hidden">
+    <ul class="list-unstyled details hidden">
       <% if @friend %>
         <li>
           <span>Activity</span>
-          <div><%= accompaniment.activity.name %></div>
+          <div><%= accompaniment.activity.try :name %></div>
         </li>
       <% end %>
 
       <% if @activity %>
         <li>
           <span>Friend</span>
-          <div><%= accompaniment.friend.name %></div>
+          <div><%= accompaniment.friend.try :name %></div>
         </li>
       <% end %>
+
+      <li>
+        <span>Date</span>
+        <div><%= accompaniment.date_time %></div>
+      </li>
 
       <li>
         <span>Plans</span>

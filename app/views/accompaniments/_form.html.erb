@@ -1,18 +1,19 @@
-<% content_for :page, 'edit friend' %>
+<% content_for :page, 'edit accompaniment' %>
 
 <div class="col-md-10">
-  <% params[:errors].try(:each) do |error| %>
-    <div class="alert alert-danger">
-      <a class="close" data-dismiss="alert" href="#">×</a>
-      <%= "<strong>#{error[0].capitalize}</strong>: #{error[1][0]}".html_safe %>
-    </div>
-  <% end %>
 
-  <div class="friends accompaniment">
+  <div class="accompaniments">
     <h2>Accompanying <%= (@friend || @activity).name %></h2>
 
+    <% params[:errors].try(:each) do |error| %>
+      <div class="alert alert-danger">
+        <a class="close" data-dismiss="alert" href="#">×</a>
+        <%= "<strong>#{error[0].capitalize}</strong>: #{error[1][0]}".html_safe %>
+      </div>
+    <% end %>
+
     <%= form_for @accompaniment do |f| %>
-      <ul class="list-unstyled">
+      <ul class="list-unstyled details">
         <li>
           <%= f.label :subject %>
           <%= f.text_field :subject, autofocus: true %>
@@ -61,6 +62,7 @@
         </li>
       </ul>
 
+      <%= f.hidden_field :redirect_to, {value: @redirect_to} %>
       <%= f.submit class: 'btn btn-success' %>
     <% end %>
   </div>

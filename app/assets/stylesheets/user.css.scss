@@ -84,11 +84,8 @@ body {
           &.left {
             width: 40%;
           }
-          &.middle {
-            width: 30%;
-          }
           &.right {
-            width: 29%;
+            width: 59%;
           }
         }
 
@@ -131,15 +128,17 @@ body {
 
     &:hover {
       background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
-      background-position: 0;
+      background-position: 0 0;
     }
 
     &:focus {
       outline: none;
+      background-position: 0 0;
     }
 
     &:active {
       background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25));
+      background-position: 0 0;
     }
  }
 }

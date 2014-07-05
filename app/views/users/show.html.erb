@@ -18,7 +18,7 @@
           <div>
             <%= link_to friend_path(f) do %>
               <span class="listed left"><%= f.name %></span>
-              <span class="listed right"><%= f.activities_organizing.count %> activity(ies)</span>
+              <span class="listed right">Organizing <%= f.activities_organizing.count %> activity(ies)</span>
             <% end %>
           </div>
         </li>
