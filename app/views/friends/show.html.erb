@@ -24,6 +24,12 @@
         </div>
       </li>
       <li>
+        <span>Accompaniment frequency</span>
+        <div>
+          <%= @friend.accompaniment_frequency.to_s + ' days' if @friend.accompaniment_frequency %>
+        </div>
+      </li>
+      <li>
         <span>Activities organizing</span>
         <div>
           <% Activity.where(organizer: @friend).each do |activity| %>

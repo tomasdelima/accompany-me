@@ -71,10 +71,11 @@ class ActivitiesController < ApplicationController
     end
 
     @activity.assign_attributes(
-      name:            pa[:name],
-      frequency:       pa[:frequency],
-      last_occurrence: last_occurrence,
-      organizer:       @organizer
+      name:                    pa[:name],
+      frequency:               pa[:frequency],
+      last_occurrence:         last_occurrence,
+      accompaniment_frequency: pa[:accompaniment_frequency].to_i,
+      organizer:               @organizer
     )
   end
 end

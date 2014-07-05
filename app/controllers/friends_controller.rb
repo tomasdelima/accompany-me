@@ -60,9 +60,10 @@ class FriendsController < ApplicationController
     end
 
     @friend.assign_attributes(
-      name:             pf[:name],
-      declared:         pf[:declared],
-      last_accompanied: last_accompanied
+      name:                    pf[:name],
+      declared:                pf[:declared],
+      last_accompanied:        last_accompanied,
+      accompaniment_frequency: pf[:accompaniment_frequency].to_i
     )
   end
 end

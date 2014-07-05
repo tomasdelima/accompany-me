@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623041427) do
+ActiveRecord::Schema.define(version: 20140705171232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140623041427) do
     t.string   "frequency"
     t.datetime "last_occurrence"
     t.integer  "user_id"
+    t.integer  "accompaniment_frequency"
   end
 
   add_index "activities", ["organizer_id"], name: "index_activities_on_organizer_id", using: :btree
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 20140623041427) do
     t.string   "name"
     t.boolean  "declared"
     t.date     "last_accompanied"
+    t.integer  "accompaniment_frequency"
   end
 
   add_index "friends", ["user_id"], name: "index_friends_on_user_id", using: :btree
