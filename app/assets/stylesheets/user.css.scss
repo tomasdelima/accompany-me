@@ -1,32 +1,52 @@
 body {
   .navbar {
-    background: #441A9E;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background: rgb(0, 64, 128);
     padding: 10px;
     margin: 0;
-    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.25);
-    border-radius: 0px 0px 20px 20px;
+    box-shadow: 0px 0px 30px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 0px 0px 0px 0px;
+    color: #fff;
 
     .navbar-brand {
       font-size: 25px;
       padding: 10px;
       height: auto;
-          color: #ccc
+      color: #fff;
+      text-shadow: 0px 0px 5px black;
     }
 
     img {
       width: 100px;
       height: 100px;
     }
+
+    .account {
+      margin: auto;
+      position: absolute;
+      right: 30px;
+
+      a {
+        color: #ddd;
+      }
+    }
   }
 
-  .user, .activity, .friend {
-    padding: 30px 15px;
+  .clear {
+    clear: both;
+  }
+
+  .container {
+    padding: 90px 15px 30px;
 
     .col-md-6 {
       margin-bottom: 15px;
     }
 
     .friends, .activities, .accompaniments {
+      margin-bottom: 20px;
       border: 1px solid #ddd;
       border-radius: 5px;
 
@@ -53,11 +73,31 @@ body {
         background: #fbfdff;
         min-height: 32px;
 
+        span.listed {
+          display: inline-block;
+          border-right: 1px dotted #ccc;
+
+          &:last-child {
+            border-right: none;
+          }
+
+          &.left {
+            width: 40%;
+          }
+          &.middle {
+            width: 30%;
+          }
+          &.right {
+            width: 29%;
+          }
+        }
+
         a {
           padding: 5px;
           display: block;
           color: #765d9c;
           font-weight: bold;
+          text-decoration: none;
         }
 
         &:hover {
@@ -74,6 +114,16 @@ body {
           text-decoration: none;
         }
       }
+    }
+  }
+
+  .btn {
+    background-image: none;
+    text-shadow: none;
+
+    &:hover {
+      background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25));
+      background-position: 0;
     }
   }
 }

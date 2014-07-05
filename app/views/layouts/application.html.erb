@@ -12,8 +12,13 @@
 <div class="navbar">
   <a href="/" class="navbar-brand">Accompany-me</a>
 
-  <div class="pull-right">
-    Welcome <%= current_user.try(:email) %>
+  <div class="account">
+    <div class="welcome">
+      Welcome <%= current_user.try(:email) %>
+    </div>
+    <div class="links">
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+    </div>
   </div>
 </div>
 

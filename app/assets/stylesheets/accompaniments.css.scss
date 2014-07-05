@@ -1,12 +1,4 @@
-$top:20px;
-
 .accompaniments {
-  margin-top: $top;
-
-  h2 {
-    top: $top - 14px !important;
-  }
-
   ul {
     margin-left: 143px !important;
 
@@ -27,6 +19,15 @@ $top:20px;
           border-right: none;
         }
       }
+    }
+
+    transition-property: width;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    transition-delay: 2s;
+
+    &.hidden {
+      display: none;
     }
   }
 }
