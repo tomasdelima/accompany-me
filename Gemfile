@@ -10,15 +10,19 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'devise'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
-gem 'debugger', group: [:development, :test]
+group :test do
+  gem 'debugger'
+end
+
+group :development do
+  gem 'letter_opener'
+  gem 'debugger'
+end

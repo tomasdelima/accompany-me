@@ -63,7 +63,7 @@ class FriendsController < ApplicationController
       name:                    pf[:name],
       declared:                pf[:declared],
       last_accompanied:        last_accompanied,
-      accompaniment_frequency: pf[:accompaniment_frequency].to_i
+      accompaniment_frequency: pf[:accompaniment_frequency]
     )
   end
 end

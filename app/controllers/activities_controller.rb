@@ -74,7 +74,7 @@ class ActivitiesController < ApplicationController
       name:                    pa[:name],
       frequency:               pa[:frequency],
       last_occurrence:         last_occurrence,
-      accompaniment_frequency: pa[:accompaniment_frequency].to_i,
+      accompaniment_frequency: pa[:accompaniment_frequency],
       organizer:               @organizer
     )
   end
