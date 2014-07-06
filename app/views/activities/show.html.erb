@@ -15,12 +15,15 @@
       </li>
       <li>
         <span>Last occurrence</span>
-        <div><%= @activity.last_occurrence.try(:to_date) %></div>
+        <div>
+          <%= @activity.last_occurrence %>
+          <%= @activity.since_last_occurrence %>
+        </div>
       </li>
       <li>
         <span>Next occurrence</span>
         <div>
-          <%= @activity.next_occurrence.try(:to_date) %>
+          <%= @activity.next_occurrence %>
           <%= @activity.until_next_occurrence %>
         </div>
       </li>
@@ -28,6 +31,20 @@
         <span>Accompaniment frequency</span>
         <div>
           <%= @activity.accompaniment_frequency.to_s + ' days' if @activity.accompaniment_frequency %>
+        </div>
+      </li>
+      <li>
+        <span>Last accompanied</span>
+        <div>
+          <%= @activity.last_accompanied %>
+          <%= @activity.since_last_accompanied %>
+        </div>
+      </li>
+      <li>
+        <span>Next accompaniment</span>
+        <div>
+          <%= @activity.next_accompaniment %>
+          <%= @activity.until_next_accompaniment %>
         </div>
       </li>
       <li><span>Organizer</span>

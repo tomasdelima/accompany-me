@@ -35,6 +35,11 @@
         </li>
 
         <li class="date-time">
+          <%= f.label :last_accompanied %>
+          <%= f.datetime_select :last_accompanied, {include_blank: true} %>
+        </li>
+
+        <li class="date-time">
           <%= f.label :accompaniment_frequency %>
           <%= f.number_field :accompaniment_frequency %>
           days

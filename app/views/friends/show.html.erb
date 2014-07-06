@@ -24,6 +24,13 @@
         </div>
       </li>
       <li>
+        <span>Next accompaniment</span>
+        <div>
+          <%= @friend.next_accompaniment %>
+          <%= @friend.until_next_accompaniment %>
+        </div>
+      </li>
+      <li>
         <span>Accompaniment frequency</span>
         <div>
           <%= @friend.accompaniment_frequency.to_s + ' days' if @friend.accompaniment_frequency %>
