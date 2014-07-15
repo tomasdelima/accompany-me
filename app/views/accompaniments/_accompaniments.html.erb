@@ -25,17 +25,17 @@
 
       <li>
         <span>Plans</span>
-        <div><%= accompaniment.plans %></div>
+        <div><%= Accompaniment.parse_html accompaniment.plans.html_safe %></div>
       </li>
 
       <li>
         <span>Achievements</span>
-        <div><%= accompaniment.achievements %></div>
+        <div><%= Accompaniment.parse_html accompaniment.achievements %></div>
       </li>
 
       <li>
         <span>Observations</span>
-        <div><%= accompaniment.observations %></div>
+        <div><%= Accompaniment.parse_html accompaniment.observations %></div>
       </li>
 
       <li>
