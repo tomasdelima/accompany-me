@@ -2,7 +2,7 @@
 
 <div class="col-md-10">
 
-  <div class="accompaniments">
+  <div class="box">
     <h2>Accompanying <%= (@friend || @activity).name %></h2>
 
     <% params[:errors].try(:each) do |error| %>
@@ -16,7 +16,7 @@
       <ul class="list-unstyled details">
         <li>
           <%= f.label :subject %>
-          <%= f.text_field :subject, autofocus: true %>
+          <%= f.text_field :subject, autofocus: true, class: :input %>
         </li>
 
         <% if @friend %>
@@ -24,7 +24,9 @@
 
           <li>
             <%= f.label :activity %>
-            <%= f.select :activity_id, @friend.activities_organizing.map{ |f| [f.name, f.id]}, {}, {} %>
+            <span class="input">
+              <%= f.select :activity_id, @friend.activities_organizing.map{ |f| [f.name, f.id]}, {}, {} %>
+            </span>
           </li>
         <% elsif @activity %>
           <%= f.hidden_field :activity_id, {value: @activity.id} %>
@@ -32,33 +34,37 @@
 
           <li>
             <%= f.label :friend %>
-            <%= @activity.organizer.name %>
+            <div class="input">
+              <%= @activity.organizer.name %>
+            </div>
           </li>
         <% end %>
 
         <li>
           <%= f.label :achievements %>
-          <%= f.text_area :achievements %>
+          <%= f.text_area :achievements, class: :input %>
         </li>
 
         <li>
           <%= f.label :plans %>
-          <%= f.text_area :plans %>
+          <%= f.text_area :plans, class: :input %>
         </li>
 
         <li>
           <%= f.label :observations %>
-          <%= f.text_area :observations %>
+          <%= f.text_area :observations, class: :input %>
         </li>
 
         <li>
           <%= f.label :place %>
-          <%= f.text_field :place %>
+          <%= f.text_field :place, class: :input %>
         </li>
 
         <li class="date-time">
           <%= f.label :date_time %>
-          <%= f.datetime_select :date_time, default: DateTime.now %>
+          <span class="input">
+            <%= f.datetime_select :date_time, default: DateTime.now %>
+          </span>
         </li>
       </ul>
 

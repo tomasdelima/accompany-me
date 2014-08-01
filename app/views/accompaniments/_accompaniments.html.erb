@@ -1,6 +1,6 @@
 
 <div class="col-md-11">
-  <div class="accompaniments">
+  <div class="box">
     <h2><i class="glyphicon glyphicon-chevron-down"></i> Accompaniment: <%= accompaniment.subject %></h2>
 
     <ul class="list-unstyled details hidden">
@@ -25,17 +25,17 @@
 
       <li>
         <span>Plans</span>
-        <div><%= Accompaniment.parse_html accompaniment.plans.html_safe %></div>
+        <div class="font-20"><%= Accompaniment.parse_html accompaniment.plans.html_safe %></div>
       </li>
 
       <li>
         <span>Achievements</span>
-        <div><%= Accompaniment.parse_html accompaniment.achievements %></div>
+        <div class="font-20"><%= Accompaniment.parse_html accompaniment.achievements %></div>
       </li>
 
       <li>
         <span>Observations</span>
-        <div><%= Accompaniment.parse_html accompaniment.observations %></div>
+        <div class="font-20"><%= Accompaniment.parse_html accompaniment.observations %></div>
       </li>
 
       <li>

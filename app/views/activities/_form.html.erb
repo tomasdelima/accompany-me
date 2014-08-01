@@ -2,7 +2,7 @@
 
 <div class="col-md-10">
 
-  <div class="activities">
+  <div class="box">
     <h2>Form for activity</h2>
 
     <% params[:errors].try(:each) do |error| %>
@@ -16,38 +16,46 @@
       <ul class="list-unstyled details">
         <li>
           <%= f.label :name %>
-          <%= f.text_field :name, autofocus: true %>
+          <%= f.text_field :name, autofocus: true, class: :input %>
         </li>
 
         <li>
           <%= f.label :frequency %>
-          <%= f.select :frequency, ['Daily','Weekly','Biweekly','Monthly','Yearly'], {include_blank: true}, {} %>
+          <span class="input">
+            <%= f.select :frequency, ['Daily','Weekly','Biweekly','Monthly','Yearly'], {include_blank: true}, {} %>
+          </span>
         </li>
 
         <li>
           <%= f.label :organizer %>
-          <%= f.select :organizer_id, current_user.friends.map{ |f| [f.name, f.id]}, {}, {} %>
+          <span class="input">
+            <%= f.select :organizer_id, current_user.friends.map{ |f| [f.name, f.id]}, {}, {} %>
+          </span>
         </li>
 
         <li class="date-time">
           <%= f.label :last_occurrence %>
-          <%= f.datetime_select :last_occurrence, {include_blank: true} %>
+          <span class="input">
+            <%= f.datetime_select :last_occurrence, {include_blank: true} %>
+          </span>
         </li>
 
         <li class="date-time">
           <%= f.label :last_accompanied %>
-          <%= f.datetime_select :last_accompanied, {include_blank: true} %>
+          <span class="input">
+            <%= f.datetime_select :last_accompanied, {include_blank: true} %>
+          </span>
         </li>
 
         <li class="date-time">
           <%= f.label :accompaniment_frequency %>
-          <%= f.number_field :accompaniment_frequency %>
+          <%= f.number_field :accompaniment_frequency, class: :input %>
           days
         </li>
 
         <li>
           <%= f.label :participants %>
-          <ul class="list-unstyled">
+          <ul class="input">
             <% current_user.friends.each do |fr| %>
               <li>
                 <%= f.check_box :participant_ids, {multiple: true, checked: @activity.participant_ids.include?(fr.id.to_i)}, fr.id, nil %>

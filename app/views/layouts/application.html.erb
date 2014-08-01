@@ -6,21 +6,22 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" href="/assets/icon.png"/>
-  <link rel="stylesheet" href="/font-awesome.min.css">
 </head>
 <body>
 
 <div class="navbar">
   <a href="/" class="navbar-brand">Accompany-me</a>
 
-  <div class="account">
-    <div class="welcome">
-      Welcome <%= current_user.try(:email) %>
+  <% if current_user %>
+    <div class="box account">
+      <h3 class="welcome">
+        Welcome <%= current_user.try(:email) %>
+      </h3>
+      <div class="links">
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      </div>
     </div>
-    <div class="links">
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-    </div>
-  </div>
+  <% end %>
 </div>
 
 <div class="container <%= content_for :page %>">

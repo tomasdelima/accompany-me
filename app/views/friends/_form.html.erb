@@ -2,7 +2,7 @@
 
 <div class="col-md-10">
 
-  <div class="friends">
+  <div class="box">
     <h2>Form for friend</h2>
 
     <% params[:errors].try(:each) do |error| %>
@@ -16,22 +16,24 @@
       <ul class="list-unstyled details">
         <li>
           <%= f.label :name %>
-          <%= f.text_field :name, autofocus: true %>
+          <%= f.text_field :name, autofocus: true, class: :input %>
         </li>
 
         <li>
           <%= f.label :declared? %>
-          <%= f.check_box :declared, autofocus: true %>
+          <%= f.check_box :declared, class: :input %>
         </li>
 
         <li class='date-time'>
           <%= f.label :last_accompanied %>
-          <%= f.date_select :last_accompanied, {include_blank: true} %>
+          <span class="input">
+            <%= f.date_select :last_accompanied, {include_blank: true} %>
+          </span>
         </li>
 
         <li class="date-time">
           <%= f.label :accompaniment_frequency %>
-          <%= f.number_field :accompaniment_frequency %>
+          <%= f.number_field :accompaniment_frequency, class: :input %>
           days
         </li>
       </ul>

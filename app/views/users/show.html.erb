@@ -7,42 +7,37 @@
 <% end %>
 
 <div class="col-md-6">
-  <div class="friends">
+  <div class="box">
     <h2>Friends</h2>
 
-    <ul class="list-unstyled">
+    <ul>
       <% current_user.friends.each do |f| %>
         <li>
-          <div>
-            <%= link_to friend_path(f) do %>
-              <span class="listed left"><%= f.name %></span>
-              <span class="listed right">Organizing <%= f.activities_organizing.count %> activity(ies)</span>
-            <% end %>
-          </div>
+          <%= link_to friend_path(f) do %>
+            <span class="listed left"><%= f.name %></span>
+            <!-- <span class="listed right">Organizing <%= f.activities_organizing.count %> activity(ies)</span> -->
+          <% end %>
         </li>
       <% end %>
-      <button class="btn btn-success"><%= link_to 'New friend', new_user_friend_path(current_user) %></button>
     </ul>
+    <button class="btn btn-success"><%= link_to 'New friend', new_user_friend_path(current_user) %></button>
   </div>
 </div>
 
 <div class="col-md-6">
-  <div class="activities">
+  <div class="box">
     <h2>Activities</h2>
 
-    <ul class="list-unstyled">
+    <ul>
       <% current_user.activities.each do |a| %>
         <li>
-          <div>
-            <%= link_to activity_path(a) do %>
-             <span class="listed left"><%= a.name %></span>
-             <span class="listed right"><%= a.participants.count %> participant(s)</span>
-            <% end %>
-          </div>
+          <%= link_to activity_path(a) do %>
+           <span class="listed left"><%= a.name %></span>
+           <!-- <span class="listed right"><%= a.participants.count %> participant(s)</span> -->
+          <% end %>
         </li>
       <% end %>
-      <button class="btn btn-success"><%= link_to 'New activity', new_activity_path %></button>
     </ul>
+    <button class="btn btn-success"><%= link_to 'New activity', new_activity_path %></button>
   </div>
 </div>
-
