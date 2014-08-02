@@ -13,7 +13,7 @@
     <% end %>
 
     <%= form_for @accompaniment do |f| %>
-      <ul class="list-unstyled details">
+      <ul class="list details">
         <li>
           <%= f.label :subject %>
           <%= f.text_field :subject, autofocus: true, class: :input %>
@@ -42,17 +42,17 @@
 
         <li>
           <%= f.label :achievements %>
-          <%= f.text_area :achievements, class: :input %>
+          <%= f.text_area :achievements, class: :wysihtml5 %>
         </li>
 
         <li>
           <%= f.label :plans %>
-          <%= f.text_area :plans, class: :input %>
+          <%= f.text_area :plans, class: :wysihtml5 %>
         </li>
 
         <li>
           <%= f.label :observations %>
-          <%= f.text_area :observations, class: :input %>
+          <%= f.text_area :observations, class: :wysihtml5 %>
         </li>
 
         <li>

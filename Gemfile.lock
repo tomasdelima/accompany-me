@@ -30,6 +30,8 @@ GEM
     bcrypt (3.1.7)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
+    bootstrap-wysihtml5-rails (0.3.2.100)
+      railties (>= 3.0)
     builder (3.1.4)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -139,6 +141,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  bootstrap-wysihtml5-rails
   debugger
   devise
   font-awesome-sass

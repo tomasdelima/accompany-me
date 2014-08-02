@@ -35,12 +35,12 @@
 
   }
 
-  ul {
+  ul.list {
     padding-left: 0;
     list-style: none;
     margin: 0;
 
-    li {
+    & > li {
       border-bottom: 1px solid #e0e0e0;
       min-height: 30px;
 
@@ -52,7 +52,7 @@
         background: #f8f8f8;
       }
 
-      a {
+      & > a {
         padding: 5px;
         display: block;
         color: #004080;
@@ -69,7 +69,7 @@
         }
       }
 
-      div {
+      & > div {
         font-size: 26px;
         font-weight: 200;
         padding: 10px;
@@ -77,10 +77,10 @@
 
       .font-20 {
         font-size: 20px;
+        word-wrap: break-word;
       }
 
       label {
-        // line-height: 50px;
         position: absolute;
         left: 34px;
         padding: 10px 0;
@@ -106,7 +106,7 @@
     }
   }
 
-  .btn {
+  & > .btn {
     margin: 10px 5px;
 
     a {
@@ -114,4 +114,12 @@
       text-decoration: none;
     }
   }
+}
+
+.wysihtml5-toolbar {
+  margin: 10px 0 0 110px !important;
+  float: right;
+}
+.wysihtml5-sandbox {
+  width: 100% !important;
 }

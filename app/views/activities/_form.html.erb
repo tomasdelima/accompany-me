@@ -13,7 +13,7 @@
     <% end %>
 
     <%= form_for activity do |f| %>
-      <ul class="list-unstyled details">
+      <ul class="list details">
         <li>
           <%= f.label :name %>
           <%= f.text_field :name, autofocus: true, class: :input %>
@@ -55,7 +55,7 @@
 
         <li>
           <%= f.label :participants %>
-          <ul class="input">
+          <ul class="list input">
             <% current_user.friends.each do |fr| %>
               <li>
                 <%= f.check_box :participant_ids, {multiple: true, checked: @activity.participant_ids.include?(fr.id.to_i)}, fr.id, nil %>

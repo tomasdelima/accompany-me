@@ -13,10 +13,10 @@
     <% end %>
 
     <%= form_for @friend do |f| %>
-      <ul class="list-unstyled details">
+      <ul class="list details">
         <li>
           <%= f.label :name %>
-          <%= f.text_field :name, autofocus: true, class: :input %>
+          <%= f.text_field :name, autofocus: true, class: :input, placeholder: "Type in the name" %>
         </li>
 
         <li>

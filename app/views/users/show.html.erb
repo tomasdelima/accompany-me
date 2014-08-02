@@ -10,12 +10,11 @@
   <div class="box">
     <h2>Friends</h2>
 
-    <ul>
+    <ul class="list">
       <% current_user.friends.each do |f| %>
         <li>
           <%= link_to friend_path(f) do %>
             <span class="listed left"><%= f.name %></span>
-            <!-- <span class="listed right">Organizing <%= f.activities_organizing.count %> activity(ies)</span> -->
           <% end %>
         </li>
       <% end %>
@@ -28,12 +27,11 @@
   <div class="box">
     <h2>Activities</h2>
 
-    <ul>
+    <ul class="list">
       <% current_user.activities.each do |a| %>
         <li>
           <%= link_to activity_path(a) do %>
            <span class="listed left"><%= a.name %></span>
-           <!-- <span class="listed right"><%= a.participants.count %> participant(s)</span> -->
           <% end %>
         </li>
       <% end %>
