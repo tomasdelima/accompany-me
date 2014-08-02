@@ -54,18 +54,19 @@
 
       & > a {
         padding: 5px;
+        padding: 10px 5px;
         display: block;
         color: #004080;
         font-size: 23px;
         font-weight: 100;
         text-decoration: none;
+        line-height: 25px;
 
         &:hover {
+          transition: font-size 0.1s linear;
+          transition: font-weight 0.1s linear;
           font-weight: 400;
-          transition: font-size 0.08s linear;
-          transition: padding 0.08s linear;
           font-size: 30px;
-          padding: 10px 5px;
         }
       }
 

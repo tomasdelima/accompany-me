@@ -48,17 +48,13 @@
         </div>
       </li>
       <li><span>Organizer</span>
-        <div>
-          <%= link_to @organizer.name, friend_path(@organizer) if @organizer %>
-        </div>
+        <%= link_to @organizer.name, friend_path(@organizer) if @organizer %>
       </li>
       <li>
         <span>Participants</span>
-        <div>
-          <% @activity.participants.map do |p| %>
-              <%= link_to p.name, user_friend_path(current_user, p) %>
-          <% end %>
-        </div>
+        <% @activity.participants.map do |p| %>
+            <%= link_to p.name, user_friend_path(current_user, p) %>
+        <% end %>
       </li>
     </ul>
 

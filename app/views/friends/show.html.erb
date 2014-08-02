@@ -38,20 +38,16 @@
       </li>
       <li>
         <span>Activities organizing</span>
-        <div>
-          <% Activity.where(organizer: @friend).each do |activity| %>
-            <%= link_to activity.name, activity_path(activity) %>
-          <% end %>
-        </div>
+        <% Activity.where(organizer: @friend).each do |activity| %>
+          <%= link_to activity.name, activity_path(activity) %>
+        <% end %>
       </li>
 
       <li>
         <span>Activities participating</span>
-        <div>
-          <% @friend.activities.each do |activity| %>
-            <%= link_to activity.name, activity_path(activity) %>
-          <% end %>
-        </div>
+        <% @friend.activities.each do |activity| %>
+          <%= link_to activity.name, activity_path(activity) %>
+        <% end %>
       </li>
     </ul>
 
