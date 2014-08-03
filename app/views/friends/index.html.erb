@@ -1,0 +1,14 @@
+<div class="box">
+  <h2>Friends</h2>
+
+  <ul class="list">
+    <% current_user.friends.each do |f| %>
+      <li>
+        <%= link_to friend_path(f) do %>
+          <span class="listed left"><%= f.name %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  <button class="btn btn-success"><%= link_to 'New friend', new_user_friend_path(current_user) %></button>
+</div>

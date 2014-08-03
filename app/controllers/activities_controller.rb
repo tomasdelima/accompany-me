@@ -1,6 +1,9 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
+  def index
+  end
+
   def new
     @activity = Activity.new
   end

@@ -18,6 +18,8 @@
         Welcome <%= current_user.try(:email) %>
       </h3>
       <div class="links">
+        <%= link_to 'Friends', friends_path %>
+        <%= link_to 'Activities', activities_path %>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       </div>
     </div>

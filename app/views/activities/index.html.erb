@@ -1,0 +1,14 @@
+<div class="box">
+  <h2>Activities</h2>
+
+  <ul class="list">
+    <% current_user.activities.each do |a| %>
+      <li>
+        <%= link_to activity_path(a) do %>
+         <span class="listed left"><%= a.name %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  <button class="btn btn-success"><%= link_to 'New activity', new_activity_path %></button>
+</div>
