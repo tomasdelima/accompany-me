@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20140705224023) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "participants_id"
     t.integer  "organizer_id"
     t.string   "frequency"
     t.datetime "last_occurrence"
@@ -46,15 +45,11 @@ ActiveRecord::Schema.define(version: 20140705224023) do
   end
 
   add_index "activities", ["organizer_id"], name: "index_activities_on_organizer_id", using: :btree
-  add_index "activities", ["participants_id"], name: "index_activities_on_participants_id", using: :btree
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "activities_friends", id: false, force: true do |t|
     t.integer "activity_id"
     t.integer "friend_id"
-  end
-
-  create_table "activities_organizers", force: true do |t|
   end
 
   create_table "friends", force: true do |t|
