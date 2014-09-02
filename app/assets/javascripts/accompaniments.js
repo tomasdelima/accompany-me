@@ -1,9 +1,12 @@
 function toggleAccompaniment () {
-  $('h2 i').on('click', function (e) {
-    var icon = $(e.currentTarget)
-        elem = icon.parent().parent().find('ul')
-    $(elem).toggleClass('hidden')
-    $(icon).toggleClass('glyphicon-chevron-down').toggleClass('glyphicon-chevron-up')
+  $('.box.accompaniment > ul').slideUp(0)
+
+  $('.box.accompaniment > h2').on('click', function (e) {
+    var target = $(e.currentTarget),
+        icon = target.find('i'),
+        elem = target.next()
+    $(elem).slideToggle(500)
+    $(icon).toggleClass('up')
   })
 }
 

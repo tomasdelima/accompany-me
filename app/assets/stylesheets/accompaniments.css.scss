@@ -8,3 +8,18 @@
 .accompaniment h2::selection {
   background: transparent;
 }
+
+.box.accompaniment {
+  h2 {
+    cursor: pointer;
+    &:hover {color: #004080};
+
+    i {
+      transition: transform 0.5s;
+
+      &.up {
+        transform: scaleY(-1);
+      }
+    }
+  }
+}
