@@ -10,5 +10,5 @@
       </li>
     <% end %>
   </ul>
-  <button class="btn btn-success"><%= link_to 'New activity', new_activity_path %></button>
+  <%= link_to 'New activity', new_activity_path(current_user), class: "btn btn-success" %>
 </div>

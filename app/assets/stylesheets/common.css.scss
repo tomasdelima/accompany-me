@@ -112,10 +112,11 @@ body {
         line-height: 25px;
 
         &:hover {
-          transition: font-size 0.1s linear;
-          transition: font-weight 0.1s linear;
-          font-weight: 400;
-          font-size: 30px;
+          transition-duration: 0.1s;
+          transition-property: font-size, font-weight;
+          transition-delay: 0.1s;
+          font-weight: 700;
+          font-size: 26px;
         }
       }
 

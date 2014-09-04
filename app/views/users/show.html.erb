@@ -7,35 +7,9 @@
 <% end %>
 
 <div class="col-md-6">
-  <div class="box">
-    <h2>Friends</h2>
-
-    <ul class="list">
-      <% current_user.friends.each do |f| %>
-        <li>
-          <%= link_to friend_path(f) do %>
-            <span class="listed left"><%= f.name %></span>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-    <button class="btn btn-success"><%= link_to 'New friend', new_user_friend_path(current_user) %></button>
-  </div>
+  <%= render template: 'friends/index.html.erb' %>
 </div>
 
 <div class="col-md-6">
-  <div class="box">
-    <h2>Activities</h2>
-
-    <ul class="list">
-      <% current_user.activities.each do |a| %>
-        <li>
-          <%= link_to activity_path(a) do %>
-           <span class="listed left"><%= a.name %></span>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-    <button class="btn btn-success"><%= link_to 'New activity', new_activity_path %></button>
-  </div>
+  <%= render template: 'activities/index.html.erb' %>
 </div>
