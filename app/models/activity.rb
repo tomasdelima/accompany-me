@@ -22,14 +22,26 @@ class Activity < ActiveRecord::Base
   def since_last_occurrence
     if last_occurrence
       d = (Date.today - last_occurrence.to_date).to_i
-      "(#{d} day#{'s' if d > 1} ago)"
+      case d
+      when 0 then "today"
+      when 1 then "tomorrow"
+      else "#{d} day#{'s' if d > 1} ago"
+      end
+    else
+      "Never happened"
     end
   end
 
   def until_next_occurrence
     if next_occurrence
       d = (next_occurrence.to_date - Date.today).to_i
-      "(in #{d} day#{'s' if d > 1})"
+      case d
+      when 0 then "today"
+      when 1 then "tomorrow"
+      else "in #{d} day#{'s' if d > 1}"
+      end
+    else
+      "Won't happen"
     end
   end
 

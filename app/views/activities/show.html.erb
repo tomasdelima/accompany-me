@@ -17,14 +17,14 @@
         <span>Last occurrence</span>
         <div>
           <%= @activity.last_occurrence %>
-          <%= @activity.since_last_occurrence %>
+          (<%= @activity.since_last_occurrence %>)
         </div>
       </li>
       <li>
         <span>Next occurrence</span>
         <div>
           <%= @activity.next_occurrence %>
-          <%= @activity.until_next_occurrence %>
+          (<%= @activity.until_next_occurrence %>)
         </div>
       </li>
       <li>
