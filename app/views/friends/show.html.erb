@@ -20,14 +20,14 @@
         <span>Last accompanied</span>
         <div>
           <%= @friend.last_accompanied %>
-          <%= @friend.since_last_accompanied %>
+          (<%= @friend.days_since_last_accompanied %> days ago)
         </div>
       </li>
       <li>
         <span>Next accompaniment</span>
         <div>
           <%= @friend.next_accompaniment %>
-          <%= @friend.until_next_accompaniment %>
+          (in <%= @friend.next_accompaniment_in %> days)
         </div>
       </li>
       <li>

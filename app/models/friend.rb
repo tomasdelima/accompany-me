@@ -10,23 +10,15 @@ class Friend < ActiveRecord::Base
     Activity.where(organizer: self)
   end
 
-  def since_last_accompanied
-    if last_accompanied
-      d = (Date.today - last_accompanied).to_i
-      "(#{d} day#{'s' if d > 1} ago)"
-    end
+  def days_since_last_accompanied
+    (Date.today - last_accompanied).to_i rescue nil
   end
 
   def next_accompaniment
-    if last_accompanied && accompaniment_frequency
-      last_accompanied + accompaniment_frequency.days
-    end
+    last_accompanied + accompaniment_frequency.days rescue nil
   end
 
-  def until_next_accompaniment
-    if next_accompaniment
-      d = (next_accompaniment.to_date - Date.today).to_i
-      "(in #{d} day#{'s' if d > 1})"
-    end
+  def next_accompaniment_in
+    (next_accompaniment - Date.today).to_i rescue nil
   end
 end

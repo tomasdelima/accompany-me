@@ -10,7 +10,7 @@ test:
   database: accompany_me_test
   pool: 5
 
-test:
+production:
   adapter: postgresql
   encoding: unicode
   database: accompany_me_production

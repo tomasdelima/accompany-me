@@ -23,7 +23,14 @@ end
 
 group :test, :development do
   gem 'debugger'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
+
+group :test do
+  gem 'factory_girl_rails'
+end
+
 
 group :development do
   gem 'letter_opener'
