@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.2'
-gem 'pg'
 
 gem "therubyracer"
 gem 'jquery-rails'
@@ -23,6 +22,7 @@ end
 
 group :test, :development do
   gem 'debugger'
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
 end
@@ -34,4 +34,8 @@ end
 
 group :development do
   gem 'letter_opener'
+end
+
+group :production do
+  gem 'pg'
 end

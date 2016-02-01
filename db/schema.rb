@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140705224023) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "accompaniments", force: true do |t|
     t.integer  "activity_id"
     t.integer  "friend_id"
@@ -29,57 +26,6 @@ ActiveRecord::Schema.define(version: 20140705224023) do
     t.datetime "updated_at"
   end
 
-  add_index "accompaniments", ["activity_id"], name: "index_accompaniments_on_activity_id", using: :btree
-  add_index "accompaniments", ["friend_id"], name: "index_accompaniments_on_friend_id", using: :btree
+  add_index "accompaniments", ["activity_id"], name: "index_accompaniments_on_activity_id"
+  add_index "accompaniments", ["friend_id"], name: "index_accompaniments_on_friend_id"
 
-  create_table "activities", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "organizer_id"
-    t.string   "frequency"
-    t.datetime "last_occurrence"
-    t.integer  "user_id"
-    t.integer  "accompaniment_frequency"
-    t.datetime "last_accompanied"
-  end
-
-  add_index "activities", ["organizer_id"], name: "index_activities_on_organizer_id", using: :btree
-  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
-
-  create_table "activities_friends", id: false, force: true do |t|
-    t.integer "activity_id"
-    t.integer "friend_id"
-  end
-
-  create_table "friends", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.string   "name"
-    t.boolean  "declared"
-    t.date     "last_accompanied"
-    t.integer  "accompaniment_frequency"
-  end
-
-  add_index "friends", ["user_id"], name: "index_friends_on_user_id", using: :btree
-
-  create_table "users", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-  end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-end

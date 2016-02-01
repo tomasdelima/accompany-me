@@ -1,13 +1,13 @@
 development:
-  adapter: postgresql
+  adapter: sqlite3
   encoding: unicode
-  database: accompany_me_development
+  database: db/accompany_me_development.sqlite3
   pool: 5
 
 test:
-  adapter: postgresql
+  adapter: sqlite3
   encoding: unicode
-  database: accompany_me_test
+  database: db/accompany_me_test.sqlite3
   pool: 5
 
 production:
