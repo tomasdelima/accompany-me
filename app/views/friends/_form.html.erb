@@ -1,9 +1,8 @@
 <% content_for :page, 'edit friend' %>
 
 <div class="col-md-10">
-
   <div class="box">
-    <h2>Form for friend</h2>
+    <h2><%= t('activerecord.model.friend') %></h2>
 
     <% params[:errors].try(:each) do |error| %>
       <div class="alert alert-danger">
@@ -34,7 +33,7 @@
         <li class="date-time">
           <%= f.label :accompaniment_frequency %>
           <%= f.number_field :accompaniment_frequency, class: :input %>
-          days
+          dias
         </li>
       </ul>
 

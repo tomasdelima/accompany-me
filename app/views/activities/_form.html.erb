@@ -1,9 +1,8 @@
 <% content_for :page, 'edit activity' %>
 
 <div class="col-md-10">
-
   <div class="box">
-    <h2>Form for activity</h2>
+    <h2><%= t('activerecord.model.activity') %></h2>
 
     <% params[:errors].try(:each) do |error| %>
       <div class="alert alert-danger">
@@ -22,7 +21,7 @@
         <li>
           <%= f.label :frequency %>
           <span class="input">
-            <%= f.select :frequency, ['Daily','Weekly','Biweekly','Monthly','Yearly'], {include_blank: true}, {} %>
+            <%= f.select :frequency, ['Diário', 'Semanal', 'Bisemanal', 'Mensal', 'Trimestral', 'Anual'], {include_blank: true}, {} %>
           </span>
         </li>
 
@@ -50,7 +49,7 @@
         <li class="date-time">
           <%= f.label :accompaniment_frequency %>
           <%= f.number_field :accompaniment_frequency, class: :input %>
-          days
+          dias
         </li>
 
         <li>

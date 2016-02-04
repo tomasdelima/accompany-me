@@ -1,5 +1,5 @@
 <div class="box">
-  <h2>Activities</h2>
+  <h2><%= t('activerecord.model.activities') %></h2>
 
   <ul class="list">
     <% current_user.activities.each do |a| %>
@@ -10,5 +10,5 @@
       </li>
     <% end %>
   </ul>
-  <%= link_to 'New activity', new_activity_path(current_user), class: "btn btn-success" %>
+  <%= link_to t('helpers.submit.create', model: t('activerecord.model.activity')), new_activity_path(current_user), class: "btn btn-success" %>
 </div>

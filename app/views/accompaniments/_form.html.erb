@@ -1,9 +1,8 @@
 <% content_for :page, 'edit accompaniment' %>
 
 <div class="col-md-10">
-
   <div class="box">
-    <h2>Accompanying <%= (@friend || @activity).name %></h2>
+    <h2><%= "#{t(:accompanying)} #{(@friend || @activity).name}" %></h2>
 
     <% params[:errors].try(:each) do |error| %>
       <div class="alert alert-danger">
@@ -33,7 +32,7 @@
           <%= f.hidden_field :friend_id, {value: @activity.organizer.id} %>
 
           <li>
-            <%= f.label :friend %>
+            <%= f.label :organizer %>
             <div class="input">
               <%= @activity.organizer.name %>
             </div>

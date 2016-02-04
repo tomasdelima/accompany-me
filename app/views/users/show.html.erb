@@ -2,7 +2,7 @@
 
 <% if current_user.todays_activities.count > 0 %>
   <div class="col-md-12 alert alert-success">
-    <%= "Today's activities: #{current_user.todays_activities.join(', ')}" %>
+    <%= "#{t('todays_activities')}: #{current_user.todays_activities.join(', ')}" %>
   </div>
 <% end %>
 

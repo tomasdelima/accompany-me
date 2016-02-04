@@ -1,5 +1,5 @@
 <div class="box">
-  <h2>Friends</h2>
+  <h2><%= t('activerecord.model.friends') %></h2>
 
   <ul class="list">
     <% current_user.friends.each do |f| %>
@@ -10,5 +10,5 @@
       </li>
     <% end %>
   </ul>
-  <%= link_to 'New friend', new_friend_path(current_user), class: "btn btn-success" %>
+  <%= link_to t('helpers.submit.create', model: t('activerecord.model.friend')), new_friend_path(current_user), class: "btn btn-success" %>
 </div>

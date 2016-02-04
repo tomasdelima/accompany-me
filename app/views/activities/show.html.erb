@@ -2,65 +2,66 @@
 
 <div class="col-md-11">
   <div class="box">
-    <h2>Details of activity</h2>
+    <h2>Detalhes da atividade</h2>
 
     <ul class="list details">
       <li>
-        <span>Name</span>
+        <span><%= t('activerecord.attributes.activity.name') %></span>
         <div><%= @activity.name %></div>
       </li>
       <li>
-        <span>Frequency</span>
+        <span><%= t('activerecord.attributes.activity.frequency') %></span>
         <div><%= @activity.frequency %></div>
       </li>
       <li>
-        <span>Last occurrence</span>
+        <span><%= t('activerecord.attributes.activity.last_occurrence') %></span>
         <div>
           <%= @activity.last_occurrence %>
           (<%= @activity.since_last_occurrence %>)
         </div>
       </li>
       <li>
-        <span>Next occurrence</span>
+        <span><%= t('activerecord.attributes.activity.next_occurrence') %></span>
         <div>
           <%= @activity.next_occurrence %>
           (<%= @activity.until_next_occurrence %>)
         </div>
       </li>
       <li>
-        <span>Accompaniment frequency</span>
+        <span><%= t('activerecord.attributes.activity.accompaniment_frequency') %></span>
         <div>
-          <%= @activity.accompaniment_frequency.to_s + ' days' if @activity.accompaniment_frequency %>
+          <%= @activity.accompaniment_frequency.to_s + ' dias' if @activity.accompaniment_frequency %>
         </div>
       </li>
       <li>
-        <span>Last accompanied</span>
+        <span><%= t('activerecord.attributes.activity.last_accompanied') %></span>
         <div>
           <%= @activity.last_accompanied %>
           <%= @activity.since_last_accompanied %>
         </div>
       </li>
       <li>
-        <span>Next accompaniment</span>
+        <span><%= t('activerecord.attributes.activity.next_accompaniment') %></span>
         <div>
           <%= @activity.next_accompaniment %>
           <%= @activity.until_next_accompaniment %>
         </div>
       </li>
-      <li><span>Organizer</span>
+      <li>
+        <span><%= t('activerecord.attributes.activity.organizer') %></span>
         <%= link_to @organizer.name, friend_path(@organizer) if @organizer %>
       </li>
       <li>
-        <span>Participants</span>
+        <span><%= t('activerecord.attributes.activity.participants') %></span>
         <% @activity.participants.map do |p| %>
             <%= link_to p.name, user_friend_path(current_user, p) %>
         <% end %>
       </li>
     </ul>
 
-    <%= link_to 'Edit activity', edit_activity_path, class: 'btn btn-primary' %>
+    <%= link_to t('helpers.submit.edit', model: t('activerecord.model.activity')), edit_activity_path, class: 'btn btn-primary' %>
     <%= link_to 'Accompany-me!', new_activity_accompaniment_path(@activity), class: 'btn btn-success' %>
-    <%= link_to 'Delete activity', activity_path, method: :delete, confirm: "Are you sure? This will also delete related accompaniments!", class: 'btn btn-danger' %>
+    <%= link_to t('helpers.submit.delete', model: t('activerecord.model.activity')), activity_path, method: :delete, confirm: "Tem certeza? Isto também deletará os acompanhamentos relacionados!", class: 'btn btn-danger' %>
   </div>
 </div>
 

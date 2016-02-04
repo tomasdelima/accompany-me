@@ -1,59 +1,58 @@
 <% content_for :page, 'friend' %>
 
-
 <div class="col-md-11">
   <div class="box">
-    <h2>Details of friend</h2>
+    <h2>Detalhes do amigo</h2>
 
     <ul class="list details">
       <li>
-        <span>Name</span>
+        <span><%= t('activerecord.attributes.friend.name') %></span>
         <div><%= @friend.name %></div>
       </li>
       <li>
-        <span>Declared</span>
+        <span><%= t('activerecord.attributes.friend.declared?') %></span>
         <div>
           <i class="icon <%= @friend.declared ? 'icon-ok' : 'icon-remove' %>"></i>
         </div>
       </li>
       <li>
-        <span>Last accompanied</span>
+        <span><%= t('activerecord.attributes.friend.last_accompanied') %></span>
         <div>
           <%= @friend.last_accompanied %>
-          (<%= @friend.days_since_last_accompanied %> days ago)
+          (<%= @friend.days_since_last_accompanied %> dias atrás)
         </div>
       </li>
       <li>
-        <span>Next accompaniment</span>
+        <span><%= t('activerecord.attributes.friend.next_accompaniment') %></span>
         <div>
           <%= @friend.next_accompaniment %>
-          (in <%= @friend.next_accompaniment_in %> days)
+          (em <%= @friend.next_accompaniment_in %> dias)
         </div>
       </li>
       <li>
-        <span>Accompaniment frequency</span>
+        <span><%= t('activerecord.attributes.friend.accompaniment_frequency') %></span>
         <div>
-          <%= @friend.accompaniment_frequency.to_s + ' days' if @friend.accompaniment_frequency %>
+          <%= @friend.accompaniment_frequency.to_s + ' dias' if @friend.accompaniment_frequency %>
         </div>
       </li>
       <li>
-        <span>Activities organizing</span>
+        <span><%= t('activerecord.attributes.friend.activities_organizing') %></span>
         <% Activity.where(organizer: @friend).each do |activity| %>
           <%= link_to activity.name, activity_path(activity) %>
         <% end %>
       </li>
 
       <li>
-        <span>Activities participating</span>
+        <span><%= t('activerecord.attributes.friend.activities_participating') %></span>
         <% @friend.activities.each do |activity| %>
           <%= link_to activity.name, activity_path(activity) %>
         <% end %>
       </li>
     </ul>
 
-    <%= link_to 'Edit friend', edit_friend_path, class: 'btn btn-primary' %>
+    <%= link_to t('helpers.submit.edit', model: t('activerecord.model.friend')), edit_friend_path, class: 'btn btn-primary' %>
     <%= link_to 'Accompany-me!', new_friend_accompaniment_path(@friend), class: 'btn btn-success' %>
-    <%= link_to 'Delete friend', friend_path, method: :delete, confirm: "Are you sure? This will also delete related accompaniments!", class: 'btn btn-danger' %>
+    <%= link_to t('helpers.submit.delete', model: t('activerecord.model.friend')), friend_path, method: :delete, confirm: "Are you sure? This will also delete related accompaniments!", class: 'btn btn-danger' %>
   </div>
 </div>
 
