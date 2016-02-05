@@ -9,6 +9,7 @@ describe Friend, type: :model do
   it { should belong_to :user }
   it { should have_and_belong_to_many :activities }
   it { should have_many :accompaniments }
+  it { should have_many :learnings }
   it { should validate_presence_of :name }
 
   describe '#activities_organizing' do

@@ -3,6 +3,7 @@ class Friend < ActiveRecord::Base
 
   has_and_belongs_to_many :activities
   has_many :accompaniments, dependent: :destroy
+  has_many :learnings, as: :related_to
 
   validates :name, presence: true
 

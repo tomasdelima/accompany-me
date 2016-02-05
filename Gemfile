@@ -23,12 +23,14 @@ end
 group :test, :development do
   gem 'byebug'
   gem 'sqlite3'
-  gem 'rspec-rails'
-  gem 'shoulda-matchers'
 end
 
 group :test do
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'factory_girl_rails'
+  gem 'test-unit'
+  gem 'minitest'
 end
 
 
