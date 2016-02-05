@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.2'
+gem 'rails'
 
 gem "therubyracer"
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'
 
 gem 'bootstrap-sass'
 gem 'twitter-bootstrap-rails'
-gem 'sass-rails', '~> 4.0.0'
-gem 'uglifier', '>= 1.3.0'
+gem 'sass-rails'
+gem 'uglifier'
 gem 'font-awesome-sass'
 gem 'bootstrap-wysihtml5-rails'
 
@@ -21,7 +21,7 @@ group :doc do
 end
 
 group :test, :development do
-  gem 'debugger'
+  gem 'byebug'
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
