@@ -16,6 +16,7 @@
 
     i {
       transition: transform 0.5s;
+      top: 4px;
 
       &.up {
         transform: scaleY(-1);

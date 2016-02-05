@@ -72,8 +72,8 @@ body {
   h2 {
     font-size: 32px;
     background: #fff;
-    top: -30px;
-
+    top: -34px;
+    padding: 0px 8px 0px;
   }
 
   h3 {
@@ -105,23 +105,20 @@ body {
         padding: 5px;
         padding: 10px 5px;
         display: block;
-        color: #004080;
-        font-size: 23px;
+        color: #0050a0;
+        font-size: 20px;
         font-weight: 100;
         text-decoration: none;
         line-height: 25px;
 
         &:hover {
-          transition-duration: 0.1s;
-          transition-property: font-size, font-weight;
-          transition-delay: 0.1s;
-          font-weight: 700;
-          font-size: 26px;
+          transition: all 0.5s;
+          color: #002040;
         }
       }
 
       & > div {
-        font-size: 26px;
+        font-size: 20px;
         font-weight: 200;
         padding: 10px;
       }
@@ -143,7 +140,7 @@ body {
       }
 
       .input {
-        margin-left: 190px !important;
+        margin-left: 222px;
         min-height: 30px;
       }
 
