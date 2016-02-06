@@ -95,6 +95,6 @@ class ActivitiesController < ApplicationController
     end
 
     def set_participants
-      @activity.participant_ids = params[:participant_ids] || params[:activity][:participant_ids]
+      @activity.participant_ids = params[:participant_ids] || params[:activity][:participant_ids] rescue nil
     end
 end

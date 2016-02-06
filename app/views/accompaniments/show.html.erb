@@ -1,0 +1,56 @@
+<% content_for :page, 'accompaniment' %>
+
+<div class="col-md-12">
+  <div class="box">
+    <h2>Detalhes do acompanhamento</h2>
+
+    <ul class="list details">
+      <li>
+        <span><%= t('activerecord.attributes.accompaniment.activity_id') %></span>
+        <div><%= link_to @accompaniment.activity.try(:name), activity_path(@accompaniment.activity) %></div>
+      </li>
+
+      <li>
+        <span><%= t('activerecord.attributes.accompaniment.friend_id') %></span>
+        <div><%= link_to @accompaniment.friend.try(:name), friend_path(@accompaniment.friend) %></div>
+      </li>
+
+      <li>
+        <span><%= t('activerecord.attributes.accompaniment.date_time') %></span>
+        <div><%= @accompaniment.date_time %></div>
+      </li>
+
+      <li>
+        <span><%= t('activerecord.attributes.accompaniment.place') %></span>
+        <div><%= @accompaniment.place %></div>
+      </li>
+
+      <li>
+        <span><%= t('activerecord.attributes.accompaniment.subject') %></span>
+        <div><%= @accompaniment.subject %></div>
+      </li>
+
+      <li>
+        <span><%= t('activerecord.attributes.accompaniment.plans') %></span>
+        <div><%= @accompaniment.plans %></div>
+      </li>
+
+      <li>
+        <span><%= t('activerecord.attributes.accompaniment.achievements') %></span>
+        <div><%= @accompaniment.achievements %></div>
+      </li>
+
+      <li>
+        <span><%= t('activerecord.attributes.accompaniment.observations') %></span>
+        <div><%= @accompaniment.observations %></div>
+      </li>
+    </ul>
+
+    <%= link_to t('helpers.submit.edit', model: t('activerecord.model.accompaniment')), edit_accompaniment_path, class: 'btn btn-primary' %>
+    <%= link_to t('helpers.submit.delete', model: t('activerecord.model.accompaniment')), accompaniment_path, method: :delete, confirm: "Tem certeza?", class: 'btn btn-danger' %>
+  </div>
+</div>
+
+<div class="col-md-12">
+  <%= render template: 'learnings/index.html.erb' %>
+</div>

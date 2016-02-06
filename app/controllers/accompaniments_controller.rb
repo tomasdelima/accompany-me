@@ -1,4 +1,5 @@
 class AccompanimentsController < ApplicationController
+  before_action :set_learnings, only: [:show, :update]
 
   def new
     if params[:friend_id]
@@ -30,10 +31,25 @@ class AccompanimentsController < ApplicationController
     end
   end
 
+  def show
+    @model_name = 'Accompaniment'
+    @accompaniment = Accompaniment.find(params[:id])
+  end
+
+  def edit
+    @accompaniment = Accompaniment.find(params[:id])
+# debugger
+    @friend = @accompaniment.friend
+    @activity = @accompaniment.activity
+  end
 
   private
 
-  def accompaniment_params
-    params.require(:accompaniment).permit(:subject, :activity_id, :friend_id, :plans, :achievements, :observations, :place, :date_time)
-  end
+    def accompaniment_params
+      params.require(:accompaniment).permit(:subject, :activity_id, :friend_id, :plans, :achievements, :observations, :place, :date_time)
+    end
+
+    def set_learnings
+      @learnings = current_user.learnings.where(related_to_id: params[:id], related_to_type: 'Accompaniment')
+    end
 end

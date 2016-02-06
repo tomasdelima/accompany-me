@@ -4,6 +4,7 @@ pt:
   activerecord:
     model:
       accompaniment: Acompanhamento
+      accompaniments: Acompanhamentos
       activity: Atividade
       activities: Atividades
       friend: Amigo

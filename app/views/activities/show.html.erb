@@ -65,10 +65,8 @@
   </div>
 </div>
 
-<div class="accompaniment">
-  <% @activity.accompaniments.each do |accompaniment| %>
-    <%= render 'accompaniments/accompaniments', accompaniment: accompaniment %>
-  <% end %>
+<div class="col-md-12">
+  <%= render partial: 'accompaniments/list.html.erb', locals: {accompaniments: @activity.accompaniments, friend_id: nil, activity_id: @activity.id} %>
 </div>
 
 <div class="col-md-12">
