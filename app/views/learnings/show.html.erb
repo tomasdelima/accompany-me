@@ -1,0 +1,17 @@
+<% content_for :page, 'learning' %>
+
+<div class="col-md-11">
+  <div class="box">
+    <h2>Detalhes do aprendizado</h2>
+
+    <ul class="list details">
+      <li>
+        <span><%= t('activerecord.attributes.learning.description') %></span>
+        <div><%= @learning.description.html_safe %></div>
+      </li>
+    </ul>
+
+    <%= link_to t('helpers.submit.edit', model: t('activerecord.model.learning')), edit_learning_path, class: 'btn btn-primary' %>
+    <%= link_to t('helpers.submit.delete', model: t('activerecord.model.learning')), learning_path, method: :delete, confirm: "Tem certeza?", class: 'btn btn-danger' %>
+  </div>
+</div>

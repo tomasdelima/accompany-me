@@ -9,6 +9,8 @@ pt:
       friend: Amigo
       friends: Amigos
       user: Usuário
+      learning: Aprendizado
+      learnings: Aprendizados
 
     attributes:
       activity:
@@ -41,6 +43,9 @@ pt:
         observations: Observações
         subject: Título
         place: Local
+
+      learning:
+        description: Descrição
 
     errors:
       messages:

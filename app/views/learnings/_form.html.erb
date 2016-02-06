@@ -1,0 +1,24 @@
+<% content_for :page, 'edit learning' %>
+
+<div class="col-md-10">
+  <div class="box">
+    <h2><%= t('activerecord.model.learning') %></h2>
+
+    <% params[:errors].try(:each) do |error| %>
+      <div class="alert alert-danger">
+        <a class="close" data-dismiss="alert" href="#">×</a>
+        <%= "<strong>#{error[0].capitalize}</strong>: #{error[1][0]}".html_safe %>
+      </div>
+    <% end %>
+
+    <%= form_for @learning do |f| %>
+      <ul class="list details">
+        <li>
+          <%= f.label :description %>
+          <%= f.text_area :description, autofocus: true, class: :wysihtml5 %>
+        </li>
+
+      <%= f.submit class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>
