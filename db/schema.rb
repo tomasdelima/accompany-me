@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160205225304) do
+ActiveRecord::Schema.define(version: 20160206003938) do
 
   create_table "accompaniments", force: true do |t|
     t.integer  "activity_id"
@@ -75,8 +75,10 @@ ActiveRecord::Schema.define(version: 20160205225304) do
     t.datetime "updated_at"
     t.integer  "related_to_id"
     t.string   "related_to_type"
+    t.integer  "owner_id"
   end
 
+  add_index "learnings", ["owner_id"], name: "index_learnings_on_owner_id"
   add_index "learnings", ["related_to_id", "related_to_type"], name: "index_learnings_on_related_to_id_and_related_to_type"
 
   create_table "users", force: true do |t|

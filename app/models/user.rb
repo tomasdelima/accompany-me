@@ -4,10 +4,9 @@ class User < ActiveRecord::Base
 
   has_many :friends, dependent: :destroy
   has_many :activities, dependent: :destroy
+  has_many :learnings, foreign_key: :owner_id
 
   def todays_activities
-    activities.map do |a|
-      a.name if a.next_occurrence == Date.today
-    end.compact
+    activities.select {|a| a.next_occurrence == Date.today }
   end
 end
