@@ -1,14 +1,1 @@
-<div class="box">
-  <h2><%= t('activerecord.model.activities') %></h2>
-
-  <ul class="list">
-    <% current_user.activities.each do |a| %>
-      <li>
-        <%= link_to activity_path(a) do %>
-         <span class="listed left"><%= a.name %></span>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-  <%= link_to t('helpers.submit.create', model: t('activerecord.model.activity')), new_activity_path(current_user), class: "btn btn-success" %>
-</div>
+<%= render partial: 'activities/list.html.erb', locals: {activities: current_user.activities, label: t('activerecord.model.activities'), args: {}} %>

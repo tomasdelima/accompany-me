@@ -35,19 +35,6 @@
           <%= @friend.accompaniment_frequency.to_s + ' dias' if @friend.accompaniment_frequency %>
         </div>
       </li>
-      <li>
-        <span><%= t('activerecord.attributes.friend.activities_organizing') %></span>
-        <% Activity.where(organizer: @friend).each do |activity| %>
-          <%= link_to activity.name, activity_path(activity) %>
-        <% end %>
-      </li>
-
-      <li>
-        <span><%= t('activerecord.attributes.friend.activities_participating') %></span>
-        <% @friend.activities.each do |activity| %>
-          <%= link_to activity.name, activity_path(activity) %>
-        <% end %>
-      </li>
     </ul>
 
     <%= link_to t('helpers.submit.edit', model: t('activerecord.model.friend')), edit_friend_path, class: 'btn btn-primary' %>
@@ -63,5 +50,15 @@
 </div>
 
 <div class="col-md-12">
+  <%= render partial: 'activities/list.html.erb', locals: {activities: Activity.where(organizer: @friend), label: t('activerecord.attributes.friend.activities_organizing'), args: {organizer_id: @friend.id}} %>
+</div>
+
+<div class="col-md-12">
+  <%= render partial: 'activities/list.html.erb', locals: {activities: @friend.activities, label: t('activerecord.attributes.friend.activities_participating'), args: {participant_ids: [@friend.id]}} %>
+</div>
+
+<div class="col-md-12">
   <%= render template: 'learnings/index.html.erb' %>
 </div>
+<div class="col-md-12">
+  <%= render template: 'learnings/index.html.erb' %>

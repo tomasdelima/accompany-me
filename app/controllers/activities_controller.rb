@@ -6,7 +6,8 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    @activity = Activity.new
+    @activity = Activity.new(organizer_id: params[:organizer_id])
+    set_participants
   end
 
   def create
@@ -94,6 +95,6 @@ class ActivitiesController < ApplicationController
     end
 
     def set_participants
-      @activity.participant_ids = params[:activity][:participant_ids]
+      @activity.participant_ids = params[:participant_ids] || params[:activity][:participant_ids]
     end
 end
