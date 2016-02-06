@@ -5,7 +5,7 @@
     <% current_user.learnings.each do |f| %>
       <li>
         <%= link_to learning_path(f) do %>
-          <span class="listed left"><%= f.description %></span>
+          <span class="listed left"><%= f.summary %></span>
         <% end %>
       </li>
     <% end %>

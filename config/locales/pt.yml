@@ -45,6 +45,7 @@ pt:
         place: Local
 
       learning:
+        summary: Resumo
         description: Descrição
 
     errors:

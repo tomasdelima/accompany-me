@@ -14,9 +14,15 @@
     <%= form_for @learning do |f| %>
       <ul class="list details">
         <li>
-          <%= f.label :description %>
-          <%= f.text_area :description, autofocus: true, class: :wysihtml5 %>
+          <%= f.label :summary %>
+          <%= f.text_field :summary, autofocus: true, class: :input %>
         </li>
+
+        <li>
+          <%= f.label :description %>
+          <%= f.text_area :description, class: :wysihtml5 %>
+        </li>
+      </ul>
 
       <%= f.submit class: 'btn btn-success' %>
     <% end %>

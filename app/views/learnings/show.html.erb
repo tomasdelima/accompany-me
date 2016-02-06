@@ -6,6 +6,11 @@
 
     <ul class="list details">
       <li>
+        <span><%= t('activerecord.attributes.learning.summary') %></span>
+        <div><%= @learning.summary %></div>
+      </li>
+
+      <li>
         <span><%= t('activerecord.attributes.learning.description') %></span>
         <div><%= @learning.description.html_safe %></div>
       </li>

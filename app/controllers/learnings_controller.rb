@@ -48,6 +48,6 @@ class LearningsController < ApplicationController
 
     def learning_attributes
       params[:learning][:owner_id] = current_user.id
-      params.require(:learning).permit(:owner_id, :description)
+      params.require(:learning).permit(:owner_id, :summary, :description)
     end
 end

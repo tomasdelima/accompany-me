@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160206003938) do
+ActiveRecord::Schema.define(version: 20160206023310) do
 
   create_table "accompaniments", force: true do |t|
     t.integer  "activity_id"
@@ -70,12 +70,12 @@ ActiveRecord::Schema.define(version: 20160206003938) do
 
   create_table "learnings", force: true do |t|
     t.text     "description"
-    t.date     "occurrence_date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "related_to_id"
     t.string   "related_to_type"
     t.integer  "owner_id"
+    t.string   "summary"
   end
 
   add_index "learnings", ["owner_id"], name: "index_learnings_on_owner_id"
