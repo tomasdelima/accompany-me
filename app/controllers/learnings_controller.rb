@@ -5,7 +5,7 @@ class LearningsController < ApplicationController
   end
 
   def new
-    @learning = Learning.new
+    @learning = Learning.new(related_to_type: params[:related_to_type], related_to_id: params[:related_to_id])
   end
 
   def create
@@ -48,6 +48,6 @@ class LearningsController < ApplicationController
 
     def learning_attributes
       params[:learning][:owner_id] = current_user.id
-      params.require(:learning).permit(:owner_id, :summary, :description)
+      params.require(:learning).permit(:owner_id, :summary, :description, :related_to_id, :related_to_type)
     end
 end

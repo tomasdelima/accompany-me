@@ -2,7 +2,7 @@
   <h2><%= t('activerecord.model.learnings') %></h2>
 
   <ul class="list">
-    <% current_user.learnings.each do |f| %>
+    <% @learnings.each do |f| %>
       <li>
         <%= link_to learning_path(f) do %>
           <span class="listed left"><%= f.summary %></span>
@@ -11,5 +11,5 @@
     <% end %>
   </ul>
 
-  <%= link_to t('helpers.submit.create', model: t('activerecord.model.learning')), new_learning_path(current_user), class: "btn btn-success" %>
+  <%= link_to t('helpers.submit.create', model: t('activerecord.model.learning')), new_learning_path(related_to_type: @model_name, related_to_id: params[:id]) , class: "btn btn-success" %>
 </div>

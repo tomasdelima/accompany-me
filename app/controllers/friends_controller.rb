@@ -1,5 +1,6 @@
 class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :edit, :update, :destroy]
+  before_action :set_learnings, only: [:show, :update]
 
   def index
   end
@@ -21,6 +22,7 @@ class FriendsController < ApplicationController
   end
 
   def show
+    @model_name = 'Friend'
   end
 
   def edit
@@ -38,35 +40,37 @@ class FriendsController < ApplicationController
   end
 
   def destroy
-    @friend.destroy
+    @friend.delete
 
     redirect_to user_path
   end
 
-
-
   private
 
-  def set_friend
-    @friend = Friend.find(params[:id])
-  end
-
-  def assign_activity_attributes
-    pf = params[:friend]
-
-    if pf["last_accompanied(1i)"].present? && pf["last_accompanied(2i)"].present? && pf["last_accompanied(3i)"].present?
-      last_accompanied = Date.new(
-        pf["last_accompanied(1i)"].to_i,
-        pf["last_accompanied(2i)"].to_i,
-        pf["last_accompanied(3i)"].to_i
-      )
+    def set_friend
+      @friend = Friend.find(params[:id])
     end
 
-    @friend.assign_attributes(
-      name:                    pf[:name],
-      declared:                pf[:declared],
-      last_accompanied:        last_accompanied,
-      accompaniment_frequency: pf[:accompaniment_frequency]
-    )
-  end
+    def set_learnings
+      @learnings = current_user.learnings.where(related_to_id: params[:id], related_to_type: 'Friend')
+    end
+
+    def assign_activity_attributes
+      pf = params[:friend]
+
+      if pf["last_accompanied(1i)"].present? && pf["last_accompanied(2i)"].present? && pf["last_accompanied(3i)"].present?
+        last_accompanied = Date.new(
+          pf["last_accompanied(1i)"].to_i,
+          pf["last_accompanied(2i)"].to_i,
+          pf["last_accompanied(3i)"].to_i
+        )
+      end
+
+      @friend.assign_attributes(
+        name:                    pf[:name],
+        declared:                pf[:declared],
+        last_accompanied:        last_accompanied,
+        accompaniment_frequency: pf[:accompaniment_frequency]
+      )
+    end
 end

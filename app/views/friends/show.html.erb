@@ -1,6 +1,6 @@
 <% content_for :page, 'friend' %>
 
-<div class="col-md-11">
+<div class="col-md-12">
   <div class="box">
     <h2>Detalhes do amigo</h2>
 
@@ -60,4 +60,8 @@
   <% @friend.accompaniments.each do |accompaniment| %>
     <%= render 'accompaniments/accompaniments', accompaniment: accompaniment %>
   <% end %>
+</div>
+
+<div class="col-md-12">
+  <%= render template: 'learnings/index.html.erb' %>
 </div>

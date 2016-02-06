@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    @learnings = current_user.learnings
   end
 
   def update

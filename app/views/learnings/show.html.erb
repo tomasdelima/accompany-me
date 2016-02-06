@@ -1,6 +1,6 @@
 <% content_for :page, 'learning' %>
 
-<div class="col-md-11">
+<div class="col-md-12">
   <div class="box">
     <h2>Detalhes do aprendizado</h2>
 
@@ -8,6 +8,11 @@
       <li>
         <span><%= t('activerecord.attributes.learning.summary') %></span>
         <div><%= @learning.summary %></div>
+      </li>
+
+      <li>
+        <span><%= t('activerecord.attributes.learning.related_to') %></span>
+        <div><%= link_to @learning.related_to.try(:name), polymorphic_path(@learning.related_to) %></div>
       </li>
 
       <li>

@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_action :set_learnings, only: [:show, :update]
 
   def index
   end
@@ -25,6 +26,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    @model_name = 'Activity'
     @organizer = @activity.organizer
   end
 
@@ -56,38 +58,42 @@ class ActivitiesController < ApplicationController
 
   private
 
-  def set_activity
-    @activity = Activity.find(params[:id])
-  end
+    def set_activity
+      @activity = Activity.find(params[:id])
+    end
 
-  def assign_activity_attributes
-    pa = params[:activity]
+    def set_learnings
+      @learnings = current_user.learnings.where(related_to_id: params[:id], related_to_type: 'Activity')
+    end
 
-    @activity.assign_attributes(
-      name:                    pa[:name],
-      frequency:               pa[:frequency],
-      last_occurrence:         parse_date("last_occurrence"),
-      last_accompanied:        parse_date("last_accompanied"),
-      accompaniment_frequency: pa[:accompaniment_frequency],
-      organizer:               @organizer
-    )
-  end
+    def assign_activity_attributes
+      pa = params[:activity]
 
-  def parse_date date_name
-    pa = params[:activity]
-
-    if pa["#{date_name}(1i)"].present? && pa["#{date_name}(2i)"].present? && pa["#{date_name}(3i)"].present?
-      DateTime.new(
-        pa["#{date_name}(1i)"].to_i,
-        pa["#{date_name}(2i)"].to_i,
-        pa["#{date_name}(3i)"].to_i,
-        pa["#{date_name}(4i)"].to_i,
-        pa["#{date_name}(5i)"].to_i
+      @activity.assign_attributes(
+        name:                    pa[:name],
+        frequency:               pa[:frequency],
+        last_occurrence:         parse_date("last_occurrence"),
+        last_accompanied:        parse_date("last_accompanied"),
+        accompaniment_frequency: pa[:accompaniment_frequency],
+        organizer:               @organizer
       )
     end
-  end
 
-  def set_participants
-    @activity.participant_ids = params[:activity][:participant_ids]
-  end
+    def parse_date date_name
+      pa = params[:activity]
+
+      if pa["#{date_name}(1i)"].present? && pa["#{date_name}(2i)"].present? && pa["#{date_name}(3i)"].present?
+        DateTime.new(
+          pa["#{date_name}(1i)"].to_i,
+          pa["#{date_name}(2i)"].to_i,
+          pa["#{date_name}(3i)"].to_i,
+          pa["#{date_name}(4i)"].to_i,
+          pa["#{date_name}(5i)"].to_i
+        )
+      end
+    end
+
+    def set_participants
+      @activity.participant_ids = params[:activity][:participant_ids]
+    end
 end
