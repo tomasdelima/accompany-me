@@ -50,15 +50,13 @@
 </div>
 
 <div class="col-md-12">
-  <%= render partial: 'activities/list.html.erb', locals: {activities: Activity.where(organizer: @friend), label: t('activerecord.attributes.friend.activities_organizing'), args: {organizer_id: @friend.id}} %>
+  <%= render partial: 'activities/list.html.erb', locals: {activities: Activity.where(organizer: @friend), icon: 'glyphicon glyphicon-list-alt', label: t('activerecord.attributes.friend.activities_organizing'), args: {organizer_id: @friend.id}} %>
 </div>
 
 <div class="col-md-12">
-  <%= render partial: 'activities/list.html.erb', locals: {activities: @friend.activities, label: t('activerecord.attributes.friend.activities_participating'), args: {participant_ids: [@friend.id]}} %>
+  <%= render partial: 'activities/list.html.erb', locals: {activities: @friend.activities, icon: 'glyphicon glyphicon-book' ,label: t('activerecord.attributes.friend.activities_participating'), args: {participant_ids: [@friend.id]}} %>
 </div>
 
 <div class="col-md-12">
   <%= render template: 'learnings/index.html.erb' %>
 </div>
-<div class="col-md-12">
-  <%= render template: 'learnings/index.html.erb' %>
