@@ -1,9 +1,14 @@
 <div class="box">
-  <h2><i class="glyphicon glyphicon-star-empty"></i> <%= t('activerecord.model.experiences') %></h2>
+  <h2 class="expandable" data-target="experiences">
+    <i class="glyphicon glyphicon-star-empty"></i>
+    <%= t('activerecord.model.experiences') %>
+    <span class="experiences count">(<%= experiences.count %>)</span>
+  </h2>
 
-  <ul class="list">
+  <ul class="experiences list expandable-list">
     <% experiences.each do |a| %>
       <li>
+        <%= link_to t('helpers.edit'), edit_experience_path(a), class: 'inline-edit' %>
         <%= link_to experience_path(a) do %>
          <span class="listed left"><%= a.description %></span>
         <% end %>

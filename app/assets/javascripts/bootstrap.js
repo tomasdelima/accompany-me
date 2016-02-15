@@ -13,4 +13,12 @@ $(document).ready(function(){
     autoclose: true,
     language: 'pt-BR',
   })
+
+  $('.expandable-list').hide()
+
+  $('.expandable').on('click', function(elem){
+    var target = $(elem.currentTarget).attr('data-target')
+    $('.expandable-list.' + target).toggle(300)
+    $('.count.' + target).fadeToggle(300)
+  })
 })

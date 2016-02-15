@@ -201,6 +201,7 @@ pt:
         other: 'Não foi possível gravar %{model}: %{count} erros'
 
   helpers:
+    edit: Editar
     select:
       prompt: Por favor selecione
     submit:

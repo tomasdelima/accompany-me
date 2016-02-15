@@ -1,9 +1,14 @@
 <div class="box">
-  <h2><i class="<%= icon %>"></i> <%= label %></h2>
+  <h2 class="expandable" data-target="<%= label.parameterize %>">
+    <i class="<%= icon %>"></i>
+    <%= label %>
+    <span class="<%= label.parameterize %> count">(<%= activities.count %>)</span>
+  </h2>
 
-  <ul class="list">
+  <ul class="<%= label.parameterize %> list expandable-list">
     <% activities.each do |a| %>
       <li>
+        <%= link_to t('helpers.edit'), edit_activity_path(a), class: 'inline-edit' %>
         <%= link_to activity_path(a) do %>
          <span class="listed left"><%= a.name %></span>
         <% end %>
@@ -11,5 +16,7 @@
     <% end %>
   </ul>
 
-  <%= link_to t('helpers.submit.create', model: t('activerecord.model.activity')), new_activity_path(organizer_id: args[:organizer_id], participant_ids: args[:participant_ids]), class: "btn btn-success" %>
+  <div>
+    <%= link_to t('helpers.submit.create', model: t('activerecord.model.activity')), new_activity_path(organizer_id: args[:organizer_id], participant_ids: args[:participant_ids]), class: "btn btn-success" %>
+  </div>
 </div>
