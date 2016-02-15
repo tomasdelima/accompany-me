@@ -15,25 +15,22 @@
       <ul class="list details">
         <li>
           <%= f.label :name %>
-          <%= f.text_field :name, autofocus: true, class: :input, placeholder: "Type in the name" %>
+          <%= f.text_field :name, autofocus: true %>
         </li>
 
         <li>
           <%= f.label :declared? %>
-          <%= f.check_box :declared, class: :input %>
+          <%= f.check_box :declared %>
         </li>
 
-        <li class='date-time'>
+        <li>
           <%= f.label :last_accompanied %>
-          <span class="input">
-            <%= f.date_select :last_accompanied, {include_blank: true} %>
-          </span>
+          <%= f.text_field :last_accompanied, class: :datepicker %>
         </li>
 
-        <li class="date-time">
+        <li>
           <%= f.label :accompaniment_frequency %>
-          <%= f.number_field :accompaniment_frequency, class: :input %>
-          dias
+          <%= f.number_field :accompaniment_frequency, placeholder: 'em dias' %>
         </li>
       </ul>
 

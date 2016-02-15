@@ -13,6 +13,7 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'font-awesome-sass'
 gem 'bootstrap-wysihtml5-rails'
+gem 'bootstrap-datepicker-rails'
 
 gem 'devise'
 

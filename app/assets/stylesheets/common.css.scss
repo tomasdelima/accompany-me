@@ -5,7 +5,7 @@ body {
 .navbar {
   position: fixed;
   width: 100%;
-  z-index: 1000;
+  z-index: 9;
   background: rgb(0, 64, 128);
   padding: 10px;
   margin: 0;
@@ -92,6 +92,7 @@ body {
     & > li {
       border-bottom: 1px solid #e0e0e0;
       min-height: 30px;
+      padding: 0 10px;
 
       &:last-child {
         border-bottom: none;
@@ -129,28 +130,41 @@ body {
       }
 
       label {
-        position: absolute;
-        left: 34px;
-        padding: 10px 0;
+        display: inline-block;
+        width: 44%;
+        padding-right: 10px;
+
+        @media screen and (max-width: 480px) { width: 100%; }
 
         &.sub-form {
-          position: initial;
-          display: initial;
+          @media screen and (max-width: 480px) { width: auto; }
         }
       }
 
-      .input {
-        margin-left: 222px;
-        min-height: 30px;
-      }
-
       input, select {
+        width: 55%;
+        display: inline-block;
         margin: 10px 0;
-      }
+        height: 30px;
+        max-width: 400px;
 
-      select {
-        width: 133px !important;
+        @media screen and (max-width: 480px) { width: 100%; }
+
+        &[type=checkbox] {
+          width: auto;
+          margin-right: 10px;
+
+          @media screen and (max-width: 480px) { width: auto; }
+        }
       }
+    }
+
+    &.details > li > label {
+      font-size: 16px;
+      min-height: 30px;
+      margin: 10px 0;
+      display: inline-block;
+      line-height: 28px;
     }
   }
 
@@ -162,12 +176,17 @@ body {
       text-decoration: none;
     }
   }
+
+  ul.wysihtml5-toolbar {
+    text-align: center;
+
+    li {
+      float: none;
+      display: inline-block;
+    }
+  }
 }
 
-.wysihtml5-toolbar {
-  margin: 10px 0 0 110px !important;
-  float: right;
-}
 .wysihtml5-sandbox {
   width: 100% !important;
 }
