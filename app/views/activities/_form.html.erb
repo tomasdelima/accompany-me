@@ -21,7 +21,6 @@
         <li>
           <%= f.label :frequency %>
           <%= f.select :frequency, ['Diário', 'Semanal', 'Bisemanal', 'Mensal', 'Trimestral', 'Anual'], {include_blank: true}, {} %>
-
         </li>
 
         <li>
@@ -31,12 +30,12 @@
 
         <li>
           <%= f.label :last_occurrence %>
-          <%= f.text_field :last_occurrence, class: :datepicker %>
+          <%= f.text_field :last_occurrence, class: :datepicker, value: @activity.last_occurrence.try(:strftime, '%d/%m/%Y') %>
         </li>
 
         <li>
           <%= f.label :last_accompanied %>
-          <%= f.text_field :last_accompanied, class: :datepicker %>
+          <%= f.text_field :last_accompanied, class: :datepicker, value: @activity.last_accompanied.try(:strftime, '%d/%m/%Y') %>
         </li>
 
         <li>

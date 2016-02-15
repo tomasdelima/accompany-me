@@ -65,30 +65,8 @@ class ActivitiesController < ApplicationController
     end
 
     def assign_activity_attributes
-      pa = params[:activity]
-
-      @activity.assign_attributes(
-        name:                    pa[:name],
-        frequency:               pa[:frequency],
-        last_occurrence:         parse_date("last_occurrence"),
-        last_accompanied:        parse_date("last_accompanied"),
-        accompaniment_frequency: pa[:accompaniment_frequency],
-        organizer:               @organizer
-      )
-    end
-
-    def parse_date date_name
-      pa = params[:activity]
-
-      if pa["#{date_name}(1i)"].present? && pa["#{date_name}(2i)"].present? && pa["#{date_name}(3i)"].present?
-        DateTime.new(
-          pa["#{date_name}(1i)"].to_i,
-          pa["#{date_name}(2i)"].to_i,
-          pa["#{date_name}(3i)"].to_i,
-          pa["#{date_name}(4i)"].to_i,
-          pa["#{date_name}(5i)"].to_i
-        )
-      end
+      params.require(:activity).permit!
+      @activity.assign_attributes(params[:activity])
     end
 
     def set_participants

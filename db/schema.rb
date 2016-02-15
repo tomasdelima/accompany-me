@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160206175030) do
+ActiveRecord::Schema.define(version: 20160215020245) do
 
   create_table "accompaniments", force: true do |t|
     t.integer  "activity_id"
     t.integer  "friend_id"
-    t.datetime "date_time"
     t.string   "place"
     t.string   "subject"
     t.text     "plans"
@@ -24,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160206175030) do
     t.text     "observations"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date_time"
   end
 
   add_index "accompaniments", ["activity_id"], name: "index_accompaniments_on_activity_id"
@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 20160206175030) do
     t.datetime "updated_at"
     t.integer  "organizer_id"
     t.string   "frequency"
-    t.datetime "last_occurrence"
     t.integer  "user_id"
     t.integer  "accompaniment_frequency"
-    t.datetime "last_accompanied"
+    t.date     "last_occurrence"
+    t.date     "last_accompanied"
   end
 
   add_index "activities", ["organizer_id"], name: "index_activities_on_organizer_id"

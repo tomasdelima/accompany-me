@@ -25,7 +25,7 @@
 
         <li>
           <%= f.label :last_accompanied %>
-          <%= f.text_field :last_accompanied, class: :datepicker %>
+          <%= f.text_field :last_accompanied, class: :datepicker, value: @friend.last_accompanied.try(:strftime, '%d/%m/%Y') %>
         </li>
 
         <li>
