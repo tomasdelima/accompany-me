@@ -20,6 +20,7 @@ AccompanyMe::Application.routes.draw do
 
   resources :accompaniments
   resources :learnings
+  resources :experiences
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

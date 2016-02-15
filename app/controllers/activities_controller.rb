@@ -50,12 +50,9 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
-    @activity.destroy
-
+    @activity.delete
     redirect_to user_path
   end
-
-
 
   private
 

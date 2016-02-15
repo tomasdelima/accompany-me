@@ -1,0 +1,29 @@
+<% content_for :page, 'edit experience' %>
+
+<div class="col-md-12">
+  <div class="box">
+    <h2>Experiência</h2>
+
+    <% params[:errors].try(:each) do |error| %>
+      <div class="alert alert-danger">
+        <a class="close" data-dismiss="alert" href="#">×</a>
+        <%= "<strong>#{error[0].capitalize}</strong>: #{error[1][0]}".html_safe %>
+      </div>
+    <% end %>
+
+    <%= form_for @experience do |f| %>
+      <%= f.hidden_field :related_to_type %>
+      <%= f.hidden_field :related_to_id %>
+
+      <ul class="list details">
+        <li>
+          <%= f.label :description %>
+          <%= f.text_area :description, autofocus: true, class: :wysihtml5 %>
+        </li>
+
+      </ul>
+
+      <%= f.submit class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

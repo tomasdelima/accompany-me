@@ -1,0 +1,15 @@
+<div class="box">
+  <h2><i class="glyphicon glyphicon-star-empty"></i> <%= t('activerecord.model.experiences') %></h2>
+
+  <ul class="list">
+    <% experiences.each do |a| %>
+      <li>
+        <%= link_to experience_path(a) do %>
+         <span class="listed left"><%= a.description %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to t('helpers.submit.create', model: t('activerecord.model.experience')), new_experience_path(related_to_type: @model_name, related_to_id: params[:id]), class: "btn btn-success" %>
+</div>

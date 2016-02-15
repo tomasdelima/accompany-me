@@ -6,12 +6,17 @@
 
     <ul class="list details">
       <li>
-        <span><%= t('activerecord.attributes.accompaniment.activity_id') %></span>
+        <span><%= t('activerecord.attributes.accompaniment.subject') %></span>
+        <div><%= @accompaniment.subject %></div>
+      </li>
+
+      <li>
+        <span><%= t('activerecord.attributes.accompaniment.activity') %></span>
         <div><%= link_to @accompaniment.activity.try(:name), activity_path(@accompaniment.activity) %></div>
       </li>
 
       <li>
-        <span><%= t('activerecord.attributes.accompaniment.friend_id') %></span>
+        <span><%= t('activerecord.attributes.accompaniment.friend') %></span>
         <div><%= link_to @accompaniment.friend.try(:name), friend_path(@accompaniment.friend) %></div>
       </li>
 
@@ -26,18 +31,13 @@
       </li>
 
       <li>
-        <span><%= t('activerecord.attributes.accompaniment.subject') %></span>
-        <div><%= @accompaniment.subject %></div>
-      </li>
-
-      <li>
         <span><%= t('activerecord.attributes.accompaniment.plans') %></span>
-        <div><%= @accompaniment.plans %></div>
+        <div><%= @accompaniment.plans.html_safe %></div>
       </li>
 
       <li>
         <span><%= t('activerecord.attributes.accompaniment.achievements') %></span>
-        <div><%= @accompaniment.achievements %></div>
+        <div><%= @accompaniment.achievements.html_safe %></div>
       </li>
 
       <li>
@@ -46,11 +46,15 @@
       </li>
     </ul>
 
-    <%= link_to t('helpers.submit.edit', model: t('activerecord.model.accompaniment')), edit_accompaniment_path, class: 'btn btn-primary' %>
-    <%= link_to t('helpers.submit.delete', model: t('activerecord.model.accompaniment')), accompaniment_path, method: :delete, confirm: "Tem certeza?", class: 'btn btn-danger' %>
+    <%= link_to t('helpers.submit.edit', model: t('activerecord.model.accompaniment')), edit_accompaniment_path(@accompaniment), class: 'btn btn-primary' %>
+    <%= link_to t('helpers.submit.delete', model: t('activerecord.model.accompaniment')), accompaniment_path(@accompaniment), method: :delete, confirm: "Tem certeza?", class: 'btn btn-danger' %>
   </div>
 </div>
 
 <div class="col-md-12">
   <%= render template: 'learnings/index.html.erb' %>
+</div>
+
+<div class="col-md-12">
+  <%= render partial: 'experiences/list.html.erb', locals: {experiences: @accompaniment.experiences} %>
 </div>

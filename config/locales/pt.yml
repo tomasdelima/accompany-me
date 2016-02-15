@@ -12,6 +12,8 @@ pt:
       user: Usuário
       learning: Aprendizado
       learnings: Aprendizados
+      experience: Experiência
+      experiences: Experiências
 
     attributes:
       activity:
@@ -38,7 +40,7 @@ pt:
         plans: Planejamento
         organizer: Organizador
         activity: Atividade
-        date_time: Data e hora
+        date_time: Data
         friend: Amigo
         achievements: Reflexão
         observations: Observações
@@ -46,6 +48,11 @@ pt:
         place: Local
 
       learning:
+        summary: Resumo
+        description: Descrição
+        related_to: Relacionado a
+
+      experience:
         summary: Resumo
         description: Descrição
 

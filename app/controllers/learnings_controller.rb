@@ -48,6 +48,11 @@ class LearningsController < ApplicationController
 
     def learning_attributes
       params[:learning][:owner_id] = current_user.id
+      # debugger
+      if (params[:learning][:related_to_id].empty?)
+        params[:learning][:related_to_id] = current_user.id
+        params[:learning][:related_to_type] = current_user.class.to_s
+      end
       params.require(:learning).permit(:owner_id, :summary, :description, :related_to_id, :related_to_type)
     end
 end
