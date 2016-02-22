@@ -15,6 +15,8 @@ $(document).ready(function(){
   })
 
   $('.expandable-list').hide()
+  $('.expanded .expandable-list').show()
+  $('.expanded .count').hide()
 
   $('.expandable').on('click', function(elem){
     var target = $(elem.currentTarget).attr('data-target')
