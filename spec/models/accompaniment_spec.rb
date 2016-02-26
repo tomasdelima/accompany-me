@@ -1,8 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Accompaniment, type: :model do
-  it { should belong_to :friend }
-  it { should belong_to :activity }
-  it { should validate_presence_of :subject }
+  it { should_not be_activitable }
+  it { should_not be_accompaniable }
+  it { should be_experienceable }
+  it { should be_learnable }
+
+  it { should belong_to :accompaniable }
+
+  it { should have_many :experiences }
   it { should have_many :learnings }
+
+  it { should validate_presence_of :subject }
 end

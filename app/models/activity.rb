@@ -1,11 +1,4 @@
-class Activity < ActiveRecord::Base
-  belongs_to :user
-
-  has_and_belongs_to_many :participants, class_name: "Friend"
-  belongs_to :organizer, class_name: "Friend"
-  has_many :accompaniments, dependent: :destroy
-  has_many :learnings, as: :related_to, dependent: :destroy
-
+class Activity < Accompaniable
   validates :name, :organizer_id, presence: true
 
   def next_occurrence

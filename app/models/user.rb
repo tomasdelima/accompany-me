@@ -1,10 +1,6 @@
-class User < ActiveRecord::Base
+class User < Activitable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  has_many :friends, dependent: :destroy
-  has_many :activities, dependent: :destroy
-  has_many :learnings, foreign_key: :owner_id
 
   validates :email, presence: true
 

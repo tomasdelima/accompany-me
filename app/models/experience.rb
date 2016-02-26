@@ -1,7 +1,4 @@
-class Experience < ActiveRecord::Base
-  has_many :learnings, as: :related_to
-  belongs_to :related_to, polymorphic: true
-
+class Experience < Learnable
   validates :related_to, :description, presence: true
 
   def name

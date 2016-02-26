@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215020245) do
+ActiveRecord::Schema.define(version: 20160222231145) do
 
   create_table "accompaniments", force: true do |t|
     t.integer  "activity_id"
@@ -24,8 +24,11 @@ ActiveRecord::Schema.define(version: 20160215020245) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "date_time"
+    t.integer  "accompaniable_id"
+    t.string   "accompaniable_type"
   end
 
+  add_index "accompaniments", ["accompaniable_id", "accompaniable_type"], name: "index_accompaniments_on_accompaniable"
   add_index "accompaniments", ["activity_id"], name: "index_accompaniments_on_activity_id"
   add_index "accompaniments", ["friend_id"], name: "index_accompaniments_on_friend_id"
 
@@ -39,14 +42,22 @@ ActiveRecord::Schema.define(version: 20160215020245) do
     t.integer  "accompaniment_frequency"
     t.date     "last_occurrence"
     t.date     "last_accompanied"
+    t.integer  "activitable_id"
+    t.string   "activitable_type"
   end
 
+  add_index "activities", ["activitable_id", "activitable_type"], name: "activities_on_activitable"
   add_index "activities", ["organizer_id"], name: "index_activities_on_organizer_id"
   add_index "activities", ["user_id"], name: "index_activities_on_user_id"
 
   create_table "activities_friends", id: false, force: true do |t|
     t.integer "activity_id"
     t.integer "friend_id"
+  end
+
+  create_table "activity2s", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "experiences", force: true do |t|
@@ -56,8 +67,11 @@ ActiveRecord::Schema.define(version: 20160215020245) do
     t.datetime "updated_at"
     t.integer  "related_to_id"
     t.string   "related_to_type"
+    t.integer  "experienceable_id"
+    t.string   "experienceable_type"
   end
 
+  add_index "experiences", ["experienceable_id", "experienceable_type"], name: "index_experiences_on_experienceable"
   add_index "experiences", ["related_to_id", "related_to_type"], name: "index_experiences_on_related_to_id_and_related_to_type"
 
   create_table "friends", force: true do |t|
@@ -80,10 +94,18 @@ ActiveRecord::Schema.define(version: 20160215020245) do
     t.string   "related_to_type"
     t.integer  "owner_id"
     t.string   "summary"
+    t.integer  "learnable_id"
+    t.string   "learnable_type"
   end
 
+  add_index "learnings", ["learnable_id", "learnable_type"], name: "index_learnings_on_learnable"
   add_index "learnings", ["owner_id"], name: "index_learnings_on_owner_id"
   add_index "learnings", ["related_to_id", "related_to_type"], name: "index_learnings_on_related_to_id_and_related_to_type"
+
+  create_table "user2s", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.datetime "created_at"

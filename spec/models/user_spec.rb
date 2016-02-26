@@ -1,11 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { FactoryGirl.create(:user) }
+  it { should be_activitable }
+  it { should be_accompaniable }
+  it { should be_experienceable }
+  it { should be_learnable }
 
-  it { should have_many :friends }
   it { should have_many :activities }
+  it { should have_many :accompaniments }
+  it { should have_many :experiences }
   it { should have_many :learnings }
+
+  let(:user) { FactoryGirl.create(:user) }
 
   describe '#todays_activities' do
     let!(:activity_1) { FactoryGirl.create(:activity, user: user) }
@@ -19,7 +25,7 @@ RSpec.describe User, type: :model do
       allow(user).to receive(:activities).and_return([activity_1, activity_2, activity_3])
     end
 
-    it 'lists only todays activities' do
+    xit 'lists only todays activities' do
       expect(user.todays_activities).to include activity_1
       expect(user.todays_activities).not_to include activity_2
       expect(user.todays_activities).not_to include activity_3
