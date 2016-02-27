@@ -5,9 +5,11 @@ class Experience < Learnable
 
   def show_fields
     [
-      :description,
-      :occurrence_date,
-      :experienceable,
+      {name: :description,         type: :text_area,    options: {class: :wysihtml5, autofocus: true}},
+      {name: :occurrence_date,     type: :text_field,   options: {value: occurrence_date.try(:strftime, '%d/%m/%Y'), class: :datepicker}},
+      {name: :experienceable_type, type: :hidden_field, options: {}},
+      {name: :experienceable_id,   type: :hidden_field, options: {}},
+      {name: :experienceable,      type: :text_field,   options: {value: experienceable.try(:name), disabled: true}, reference: true},
     ]
   end
 

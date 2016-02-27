@@ -8,12 +8,16 @@ class User < Activitable
 
   def show_fields
     [
-      :email,
+      {name: :email, type: :text_field, options: {}},
     ]
   end
 
   def model_name
     I18n.t('activerecord.model.user')
+  end
+
+  def name
+    email
   end
 
   def todays_activities

@@ -6,9 +6,15 @@
 
     <ul class="list details">
       <% @object.show_fields.each do |field| %>
-        <li>
-          <span><%= t("activerecord.attributes.#{@object.class.to_s.downcase}.#{field}") %></span>
-          <div><%= @object.send(field) %></div>
+        <li class="<%= "hidden" if field[:type] == :hidden_field %>">
+          <span><%= t("activerecord.attributes.#{@object.class.to_s.downcase}.#{field[:name]}") %></span>
+          <div>
+            <% if field[:reference] %>
+              <%= link_to field[:options][:value], polymorphic_path(@object.send(field[:name])) %>
+            <% else %>
+              <%= @object.send(field[:name]) %>
+            <% end %>
+          </div>
         </li>
       <% end %>
     </ul>
@@ -20,7 +26,7 @@
 
 <% if @object.activitable? %>
   <div class="col-md-12">
-    <%= render partial: "list.html.erb", locals: {singular_label: 'activity', plural_label: 'activities', icon: 'book', objects: @object.activities, new_path: "/activities/new?activitiable_type=#{@object.class}&activitiable_id=#{@object.id}"} %>
+    <%= render partial: "list.html.erb", locals: {singular_label: 'activity', plural_label: 'activities', icon: 'book', objects: @object.activities, new_path: "/activities/new?activitable_type=#{@object.class}&activitable_id=#{@object.id}"} %>
   </div>
 <% end %>
 

@@ -7,13 +7,15 @@ class Accompaniment < Experienceable
 
   def show_fields
     [
-      :subject,
-      :accompaniable,
-      :plans,
-      :achievements,
-      :observations,
-      :date_time,
-      :place,
+      {name: :subject,            type: :text_field, options: {autofocus: true}},
+      {name: :accompaniable_type, type: :hidden_field, options: {}},
+      {name: :accompaniable_id,   type: :hidden_field, options: {}},
+      {name: :accompaniable,      type: :text_field, options: {value: accompaniable.try(:name)}, reference: true},
+      {name: :achievements,       type: :text_area,  options: {class: :wysihtml5}},
+      {name: :plans,              type: :text_area,  options: {class: :wysihtml5}},
+      {name: :observations,       type: :text_area,  options: {class: :wysihtml5}},
+      {name: :date_time,          type: :text_field, options: {default: DateTime.now, class: :datepicker}},
+      {name: :place,              type: :text_field, options: {}},
     ]
   end
 

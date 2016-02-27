@@ -5,13 +5,14 @@ class Activity < Accompaniable
 
   def show_fields
     [
-      :name,
-      :organizer_id,
-      :frequency,
-      :accompaniment_frequency,
-      :last_occurrence,
-      :last_accompanied,
-      :activitable
+      {name: :name,                    type: :text_field,   options: {autofocus: true}},
+      {name: :frequency,               type: :select,       options: {include_blank: true}, values: ['Diário', 'Semanal', 'Bisemanal', 'Mensal', 'Trimestral', 'Anual']},
+      {name: :accompaniment_frequency, type: :number_field, options: {placeholder: 'em dias'}},
+      {name: :last_occurrence,         type: :text_field,   options: {value: last_occurrence.try(:strftime, '%d/%m/%Y'), class: :datepicker}},
+      {name: :last_accompanied,        type: :text_field,   options: {value: last_accompanied.try(:strftime, '%d/%m/%Y'), class: :datepicker}},
+      {name: :activitable_type,        type: :hidden_field, options: {}},
+      {name: :activitable_id,          type: :hidden_field, options: {}},
+      {name: :activitable,             type: :text_field,   options: {value: activitable.try(:name), disabled: true}, reference: true},
     ]
   end
 

@@ -1,0 +1,31 @@
+<% content_for :page, "edit #{@object.class.to_s.downcase}" %>
+
+<div class="col-md-10">
+  <div class="box">
+    <h2><%= t("activerecord.model.#{@object.class.to_s.downcase}") %></h2>
+
+    <% params[:errors].try(:each) do |error| %>
+      <div class="alert alert-danger">
+        <a class="close" data-dismiss="alert" href="#">×</a>
+        <%= "<strong>#{error[0].capitalize}</strong>: #{error[1][0]}".html_safe %>
+      </div>
+    <% end %>
+
+    <%= form_for @object do |f| %>
+      <ul class="list details">
+        <% @object.show_fields.each do |field| %>
+          <li class="<%= "hidden" if field[:type] == :hidden_field %>">
+            <%= f.label field[:name] %>
+            <% if field[:type] == :select %>
+              <%= f.send(field[:type], field[:name], field[:values], field[:options]) %>
+            <% else %>
+              <%= f.send(field[:type], field[:name], field[:options]) %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+      <%= f.submit t("helpers.submit.submit", model: t("activerecord.model.#{@object.class.to_s.downcase}")), class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>

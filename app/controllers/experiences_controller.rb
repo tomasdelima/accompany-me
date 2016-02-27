@@ -56,6 +56,6 @@ class ExperiencesController < ApplicationController
 
     def experience_params
       params[:experience] ||= {experienceable_type: params[:experienceable_type], experienceable_id: params[:experienceable_id]}
-      params.require(:experience).permit(:description, :experienceable_id, :experienceable_type)
+      params.require(:experience).permit(:description, :occurrence_date, :experienceable_id, :experienceable_type)
     end
 end

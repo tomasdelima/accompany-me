@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :init_activity, only: [:new, :create]
   before_action :find_activity, only: [:show, :edit, :update, :destroy]
-  before_action :assign_activity_attributes, only: [:edit, :update]
+  before_action :assign_activity_attributes, only: [:create, :update]
 
   def index
   end
