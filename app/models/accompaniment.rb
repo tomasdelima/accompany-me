@@ -14,7 +14,7 @@ class Accompaniment < Experienceable
       {name: :achievements,       type: :text_area,  options: {class: :wysihtml5}},
       {name: :plans,              type: :text_area,  options: {class: :wysihtml5}},
       {name: :observations,       type: :text_area,  options: {class: :wysihtml5}},
-      {name: :date_time,          type: :text_field, options: {default: DateTime.now, class: :datepicker}},
+      {name: :date_time,          type: :text_field, options: {value: date_time.try(:strftime, '%d/%m/%Y') || Date.today, class: :datepicker}},
       {name: :place,              type: :text_field, options: {}},
     ]
   end

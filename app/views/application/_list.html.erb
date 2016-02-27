@@ -1,11 +1,11 @@
 <div class="box">
-  <h2 class="expandable" data-target="accompaniment">
+  <h2 class="expandable" data-target="<%= singular_label %>">
     <i class="glyphicon glyphicon-<%= icon %>"></i>
     <%= t("activerecord.model.#{plural_label}") %>
-    <span class="accompaniment count">(<%= objects.try(:count) %>)</span>
+    <span class="<%= singular_label %> count">(<%= objects.try(:count) %>)</span>
   </h2>
 
-  <ul class="accompaniment list expandable-list">
+  <ul class="<%= singular_label %> list expandable-list">
     <% objects.each do |object| %>
       <li>
         <%= link_to t("helpers.edit"), edit_polymorphic_path(object), class: "inline-edit" %>
