@@ -13,9 +13,17 @@
 
     <%= form_for @learning do |f| %>
       <ul class="list details">
+        <%= f.hidden_field :learnable_type %>
+        <%= f.hidden_field :learnable_id %>
+
         <li>
           <%= f.label :summary %>
           <%= f.text_field :summary, autofocus: true %>
+        </li>
+
+        <li>
+          <%= f.label :learnable %>
+          <%= @object.learnable %>
         </li>
 
         <li>

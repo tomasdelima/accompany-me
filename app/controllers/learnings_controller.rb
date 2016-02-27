@@ -1,16 +1,14 @@
 class LearningsController < ApplicationController
-  before_action :set_learning, only: [:show, :edit, :update, :destroy]
+  before_action :init_learning, only: [:new, :create]
+  before_action :find_learning, only: [:show, :edit, :update, :destroy]
 
   def index
   end
 
   def new
-    @learning = Learning.new
   end
 
   def create
-    @learning = Learning.new(learning_attributes)
-
     if @learning.save
       redirect_to learning_path(@learning)
     else
@@ -42,11 +40,16 @@ class LearningsController < ApplicationController
 
   private
 
-    def set_learning
-      @learning = Learning.find(params[:id])
+    def init_learning
+      @object = @learning = Learning.new(learning_attributes)
+    end
+
+    def find_learning
+      @object = @learning = Learning.find(params[:id])
     end
 
     def learning_attributes
-      params.require(:learning).permit(:owner_id, :summary, :description)
+      params[:learning] ||= {learnable_type: params[:learnable_type], learnable_id: params[:learnable_id]}
+      params.require(:learning).permit(:learnable_type, :learnable_id, :owner_id, :summary, :description)
     end
 end

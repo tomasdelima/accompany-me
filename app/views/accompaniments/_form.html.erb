@@ -2,7 +2,7 @@
 
 <div class="col-md-12">
   <div class="box">
-    <h2><%= "#{t(:accompanying)} #{(@friend || @activity).name}" %></h2>
+    <h2><%= "#{t(:accompanying)} #{(@friend || @activity).try(:name)}" %></h2>
 
     <% params[:errors].try(:each) do |error| %>
       <div class="alert alert-danger">
@@ -13,27 +13,18 @@
 
     <%= form_for @accompaniment do |f| %>
       <ul class="list details">
+        <%= f.hidden_field :accompaniable_type %>
+        <%= f.hidden_field :accompaniable_id %>
+
         <li>
           <%= f.label :subject %>
           <%= f.text_field :subject, autofocus: true %>
         </li>
 
-        <% if @friend %>
-          <%= f.hidden_field :friend_id, {value: @friend.id} %>
-
-          <li>
-            <%= f.label :activity %>
-            <%= f.select :activity_id, @friend.activities_organizing.map{ |f| [f.name, f.id]}, {}, {} %>
-          </li>
-        <% elsif @activity %>
-          <%= f.hidden_field :activity_id, {value: @activity.id} %>
-          <%= f.hidden_field :friend_id, {value: @activity.organizer.id} %>
-
-          <li>
-            <%= f.label :organizer %>
-            <%= @activity.organizer.email %>
-          </li>
-        <% end %>
+        <li>
+          <%= f.label :accompaniable %>
+          <%= @accompaniment.accompaniable %>
+        </li>
 
         <li>
           <%= f.label :achievements %>

@@ -1,7 +1,23 @@
 class Activity < Accompaniable
   has_and_belongs_to_many :participants, class_name: 'User'
-  belongs_to :organizer, class_name: 'User'
-  validates :name, :organizer_id, presence: true
+
+  validates :name, presence: true
+
+  def show_fields
+    [
+      :name,
+      :organizer_id,
+      :frequency,
+      :accompaniment_frequency,
+      :last_occurrence,
+      :last_accompanied,
+      :activitable
+    ]
+  end
+
+  def model_name
+    I18n.t('activerecord.model.activity')
+  end
 
   def next_occurrence
     if last_occurrence

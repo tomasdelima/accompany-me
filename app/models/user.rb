@@ -6,6 +6,16 @@ class User < Activitable
   has_many :friends, through: :friendships
   validates :email, presence: true
 
+  def show_fields
+    [
+      :email,
+    ]
+  end
+
+  def model_name
+    I18n.t('activerecord.model.user')
+  end
+
   def todays_activities
     activities.select {|a| a.next_occurrence == Date.today }
   end

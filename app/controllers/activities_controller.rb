@@ -1,20 +1,16 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: [:show, :edit, :update, :destroy]
-  before_action :set_learnings, only: [:show, :update]
+  before_action :init_activity, only: [:new, :create]
+  before_action :find_activity, only: [:show, :edit, :update, :destroy]
+  before_action :assign_activity_attributes, only: [:edit, :update]
 
   def index
   end
 
   def new
-    @activity = Activity.new(organizer_id: params[:organizer_id])
     set_participants
   end
 
   def create
-    @organizer = User.find(params[:activity][:organizer_id]) if params[:activity][:organizer_id]
-    @activity = Activity.new
-    assign_activity_attributes
-
     if @activity.valid?
       set_participants
       @activity.save
@@ -28,16 +24,12 @@ class ActivitiesController < ApplicationController
 
   def show
     @model_name = 'Activity'
-    @organizer = @activity.organizer
   end
 
   def edit
   end
 
   def update
-    @organizer = User.find(params[:activity][:organizer_id])
-    assign_activity_attributes
-
     if @activity.valid?
       set_participants
       @activity.save
@@ -56,17 +48,21 @@ class ActivitiesController < ApplicationController
 
   private
 
-    def set_activity
-      @activity = Activity.find(params[:id])
+    def init_activity
+      @object = @activity = Activity.new(activity_params)
     end
 
-    def set_learnings
-      @learnings = current_user.learnings.where(related_to_id: params[:id], related_to_type: 'Activity')
+    def find_activity
+      @object = @activity = Activity.find(params[:id])
     end
 
     def assign_activity_attributes
+      @activity.assign_attributes(activity_params)
+    end
+
+    def activity_params
+      params[:activity] ||= {activitable_type: params[:activitable_type], activitable_id: params[:activitable_id]}
       params.require(:activity).permit!
-      @activity.assign_attributes(params[:activity])
     end
 
     def set_participants

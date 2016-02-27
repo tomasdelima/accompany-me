@@ -24,8 +24,9 @@
         </li>
 
         <li>
-          <%= f.label :organizer %>
-          <%= f.select :organizer_id, current_user.friends.map{ |f| [f.email, f.id]}, {}, {} %>
+          <%= f.label :activitable %>
+          <%= f.hidden_field :activitable_type, value: 'User' %>
+          <%= f.select :activitable_id, current_user.friends.map{ |f| [f.email, f.id]}, {}, {} %>
         </li>
 
         <li>

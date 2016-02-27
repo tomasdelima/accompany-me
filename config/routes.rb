@@ -7,14 +7,10 @@ AccompanyMe::Application.routes.draw do
   root 'users#show'
 
   resources :users
-
-  resources :activities do
-    resources :accompaniments
-  end
-
+  resources :activities
   resources :accompaniments
-  resources :learnings
   resources :experiences
+  resources :learnings
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
