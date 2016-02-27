@@ -2,7 +2,6 @@ class AccompanimentsController < ApplicationController
   before_action :init_accompaniment, only: [:new, :create]
   before_action :find_accompaniment, only: [:show, :edit, :update, :destroy]
   before_action :assign_accompaniment_attributes, only: [:create, :update]
-  before_action :set_learnings, only: [:show, :create, :update]
 
   def new
   end
@@ -56,9 +55,5 @@ class AccompanimentsController < ApplicationController
     def accompaniment_params
       params[:accompaniment] ||= {accompaniable_type: params[:accompaniable_type], accompaniable_id: params[:accompaniable_id]}
       params.require(:accompaniment).permit(:accompaniable_type, :accompaniable_id, :subject, :activity_id, :plans, :achievements, :observations, :place, :date_time)
-    end
-
-    def set_learnings
-      @learnings = current_user.learnings.where(related_to_id: params[:id], related_to_type: 'Accompaniment')
     end
 end

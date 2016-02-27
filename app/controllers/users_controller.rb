@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_user
 
+  def home
+  end
+
   def show
   end
 
