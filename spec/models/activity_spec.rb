@@ -12,5 +12,5 @@ describe Activity, type: :model do
   it { should have_many :experiences }
   it { should have_many :learnings }
 
-  xit { should have_and_belong_to_many :participants }
+  it { should have_and_belong_to_many :participants }
 end

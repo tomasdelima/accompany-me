@@ -14,9 +14,9 @@ RSpec.describe User, type: :model do
   let(:user) { FactoryGirl.create(:user) }
 
   describe '#todays_activities' do
-    let!(:activity_1) { FactoryGirl.create(:activity, user: user) }
-    let!(:activity_2) { FactoryGirl.create(:activity, user: user) }
-    let!(:activity_3) { FactoryGirl.create(:activity, user: user) }
+    let!(:activity_1) { FactoryGirl.create(:activity, activitable: user) }
+    let!(:activity_2) { FactoryGirl.create(:activity, activitable: user) }
+    let!(:activity_3) { FactoryGirl.create(:activity, activitable: user) }
 
     before do
       allow(activity_1).to receive(:next_occurrence).and_return(Date.today)
@@ -25,7 +25,7 @@ RSpec.describe User, type: :model do
       allow(user).to receive(:activities).and_return([activity_1, activity_2, activity_3])
     end
 
-    xit 'lists only todays activities' do
+    it 'lists only todays activities' do
       expect(user.todays_activities).to include activity_1
       expect(user.todays_activities).not_to include activity_2
       expect(user.todays_activities).not_to include activity_3

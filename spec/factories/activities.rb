@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :activity, class: Activity do
-    association :organizer, factory: :friend
+    association :activitable, factory: :user
 
     name                    { "Activity #{rand 1000}" }
     frequency               { 7 }
