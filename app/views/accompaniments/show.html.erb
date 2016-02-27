@@ -11,16 +11,6 @@
       </li>
 
       <li>
-        <span><%= t('activerecord.attributes.accompaniment.activity') %></span>
-        <div><%= link_to @accompaniment.activity.try(:name), activity_path(@accompaniment.activity) %></div>
-      </li>
-
-      <li>
-        <span><%= t('activerecord.attributes.accompaniment.friend') %></span>
-        <div><%= link_to @accompaniment.friend.try(:name), friend_path(@accompaniment.friend) %></div>
-      </li>
-
-      <li>
         <span><%= t('activerecord.attributes.accompaniment.date_time') %></span>
         <div><%= @accompaniment.date_time %></div>
       </li>

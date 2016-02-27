@@ -5,7 +5,7 @@ class LearningsController < ApplicationController
   end
 
   def new
-    @learning = Learning.new(related_to_type: params[:related_to_type], related_to_id: params[:related_to_id])
+    @learning = Learning.new
   end
 
   def create
@@ -47,12 +47,6 @@ class LearningsController < ApplicationController
     end
 
     def learning_attributes
-      params[:learning][:owner_id] = current_user.id
-      # debugger
-      if (params[:learning][:related_to_id].empty?)
-        params[:learning][:related_to_id] = current_user.id
-        params[:learning][:related_to_type] = current_user.class.to_s
-      end
-      params.require(:learning).permit(:owner_id, :summary, :description, :related_to_id, :related_to_type)
+      params.require(:learning).permit(:owner_id, :summary, :description)
     end
 end

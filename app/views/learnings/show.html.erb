@@ -11,11 +11,6 @@
       </li>
 
       <li>
-        <span><%= t('activerecord.attributes.learning.related_to') %></span>
-        <div><%= link_to @learning.related_to.try(:name), polymorphic_path(@learning.related_to) %></div>
-      </li>
-
-      <li>
         <span><%= t('activerecord.attributes.learning.description') %></span>
         <div><%= @learning.description.html_safe %></div>
       </li>

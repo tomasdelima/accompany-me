@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222231145) do
+ActiveRecord::Schema.define(version: 20160227012346) do
 
   create_table "accompaniments", force: true do |t|
     t.integer  "activity_id"
@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(version: 20160222231145) do
   add_index "activities", ["organizer_id"], name: "index_activities_on_organizer_id"
   add_index "activities", ["user_id"], name: "index_activities_on_user_id"
 
-  create_table "activities_friends", id: false, force: true do |t|
+  create_table "activities_users", force: true do |t|
     t.integer "activity_id"
-    t.integer "friend_id"
+    t.integer "user_id"
   end
 
   create_table "activity2s", force: true do |t|
@@ -74,17 +74,15 @@ ActiveRecord::Schema.define(version: 20160222231145) do
   add_index "experiences", ["experienceable_id", "experienceable_type"], name: "index_experiences_on_experienceable"
   add_index "experiences", ["related_to_id", "related_to_type"], name: "index_experiences_on_related_to_id_and_related_to_type"
 
-  create_table "friends", force: true do |t|
+  create_table "friendships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
-    t.string   "name"
-    t.boolean  "declared"
-    t.date     "last_accompanied"
-    t.integer  "accompaniment_frequency"
   end
 
-  add_index "friends", ["user_id"], name: "index_friends_on_user_id"
+  add_index "friendships", ["friend_id"], name: "index_friendships_on_friend_id"
+  add_index "friendships", ["user_id"], name: "index_friendships_on_user_id"
 
   create_table "learnings", force: true do |t|
     t.text     "description"

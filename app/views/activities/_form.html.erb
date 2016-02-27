@@ -25,7 +25,7 @@
 
         <li>
           <%= f.label :organizer %>
-          <%= f.select :organizer_id, current_user.friends.map{ |f| [f.name, f.id]}, {}, {} %>
+          <%= f.select :organizer_id, current_user.friends.map{ |f| [f.email, f.id]}, {}, {} %>
         </li>
 
         <li>
@@ -49,7 +49,7 @@
             <% current_user.friends.each do |fr| %>
               <li>
                 <%= f.check_box :participant_ids, {multiple: true, checked: @activity.participant_ids.include?(fr.id.to_i)}, fr.id, nil %>
-                <%= f.label "participant_ids_#{fr.id}", fr.name, {class: 'sub-form'} %>
+                <%= f.label "participant_ids_#{fr.id}", fr.email, {class: 'sub-form'} %>
               </li>
             <% end %>
           </ul>

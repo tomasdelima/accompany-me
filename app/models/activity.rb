@@ -1,4 +1,6 @@
 class Activity < Accompaniable
+  has_and_belongs_to_many :participants, class_name: 'User'
+  belongs_to :organizer, class_name: 'User'
   validates :name, :organizer_id, presence: true
 
   def next_occurrence
