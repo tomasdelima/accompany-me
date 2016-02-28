@@ -19,6 +19,11 @@ body {
     height: auto;
     color: #fff;
     text-shadow: 0px 0px 5px black;
+
+    @media (max-width: 700px) {
+      display: block;
+      width: 100%;
+    }
   }
 
   img {
@@ -39,6 +44,57 @@ body {
         text-decoration: none;
         margin: 0 5px;
         display: inline-block;
+      }
+    }
+  }
+
+  .sign-in {
+    text-align: right;
+
+    @media (max-width: 700px) {
+      text-align: left;
+    }
+
+    form {
+      margin: 0;
+    }
+
+    .right {
+      display: inline-block;
+      text-align: left;
+
+      &.remember-me {
+        .center {
+          text-align: center;
+
+          input {
+            margin: 0;
+          }
+        }
+      }
+
+      label {
+        margin: 0;
+        font-size: 13px;
+      }
+
+      input {
+        height: 22px;
+        margin: 0 10px 0 0;
+        border-radius: 1px;
+        border: none;
+        display: inline-block;
+      }
+
+      &.submit {
+        input {
+          background: #105090;
+          border: 1px solid #003070;
+          border-radius: 3px;
+          width: 75px;
+          height: 28px;
+          margin: 0 15px;
+        }
       }
     }
   }

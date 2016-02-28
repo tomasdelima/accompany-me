@@ -1,0 +1,73 @@
+.sign-up-page {
+  font-size: 19px;
+
+  .accompany-me {
+
+  }
+
+  .text {
+
+    .welcome {
+
+    }
+
+    .explanation {
+
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 20px;
+
+      li {
+        i {
+          font-size: 40px;
+          margin: 10px;
+        }
+
+        span {
+          position: relative;
+          top: -10px;
+        }
+      }
+    }
+  }
+
+  .sign-up {
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    input {
+      display: inline-block;
+      font-size: 19px;
+      height: 33px;
+      margin: 5px 0;
+      width: 100%;
+    }
+
+    .submit {
+      padding: 20px;
+      text-align: center;
+
+      input {
+        width: 150px;
+        border: none;
+        border-radius: 2px;
+        background: #004080;
+        color: white;
+      }
+    }
+
+    .shared-links {
+
+      .shared-link {
+
+      }
+    }
+  }
+}

@@ -1,9 +1,5 @@
-<!-- Voce tem <%= current_user.friends.count %> amigo<%= 's' if current_user.friends.count > 1 %> -->
-
-
-
 <div class="col-md-6">
-  <%= render partial: "list.html.erb", locals: {singular_label: 'friend', plural_label: 'friends', icon: 'user', objects: current_user.friends, new_path: "/users/new?activitable_type=#{current_user.class}&activitable_id=#{current_user.id}"} %>
+  <%= render partial: "list.html.erb", locals: {singular_label: 'friend', plural_label: 'friends', icon: 'user', objects: current_user.friends, new_path: "/users/new"} %>
 </div>
 
 <div class="col-md-6">

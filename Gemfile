@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails'
 
-gem "therubyracer"
+gem 'therubyracer'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
