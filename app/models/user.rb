@@ -50,18 +50,26 @@ class User < Activitable
     end
 
     def all_friends_query(model)
-      "(#{model}_type = 'User' AND #{model}_id IN (#{friends.map(&:id).join(',')}))"
+      all_base_query(model, 'User', friends)
     end
 
     def all_activities_query(model)
-      "(#{model}_type = 'Activity' AND #{model}_id IN (#{all_activities.map(&:id).join(',')}))"
+      all_base_query(model, 'Activity', all_activities)
     end
 
     def all_accompaniments_query(model)
-      "(#{model}_type = 'Accompaniment' AND #{model}_id IN (#{all_accompaniments.map(&:id).join(',')}))"
+      all_base_query(model, 'Accompaniment', all_accompaniments)
     end
 
     def all_experiences_query(model)
-      "(#{model}_type = 'Experience' AND #{model}_id IN (#{all_experiences.map(&:id).join(',')}))"
+      all_base_query(model, 'Experience', all_experiences)
+    end
+
+    def all_base_query(abstract_model, real_model, collection)
+      if collection.present?
+        "(#{abstract_model}_type = '#{real_model}' AND #{abstract_model}_id IN (#{collection.map(&:id).join(',')}))"
+      else
+        "(0 = 1)" # Method to prevent errors when the collection is empty on PG
+      end
     end
 end

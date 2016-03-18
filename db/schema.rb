@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20160227184211) do
 
   create_table "accompaniments", force: true do |t|
+    t.date     "date_time"
     t.string   "place"
     t.string   "subject"
     t.text     "plans"
@@ -21,7 +22,6 @@ ActiveRecord::Schema.define(version: 20160227184211) do
     t.text     "observations"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "date_time"
     t.integer  "accompaniable_id"
     t.string   "accompaniable_type"
   end
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20160227184211) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "frequency"
-    t.integer  "accompaniment_frequency"
     t.date     "last_occurrence"
+    t.integer  "accompaniment_frequency"
     t.date     "last_accompanied"
     t.integer  "activitable_id"
     t.string   "activitable_type"
@@ -45,11 +45,6 @@ ActiveRecord::Schema.define(version: 20160227184211) do
   create_table "activities_users", force: true do |t|
     t.integer "activity_id"
     t.integer "user_id"
-  end
-
-  create_table "activity2s", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "experiences", force: true do |t|
@@ -83,11 +78,6 @@ ActiveRecord::Schema.define(version: 20160227184211) do
   end
 
   add_index "learnings", ["learnable_id", "learnable_type"], name: "index_learnings_on_learnable"
-
-  create_table "user2s", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
