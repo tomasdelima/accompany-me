@@ -1,10 +1,11 @@
 class User < Activitable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable
 
   has_many :friendships
   has_many :friends, through: :friendships
-  validates :email, presence: true
+
+  validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+  validate :password_integrity
 
   def show_fields
     [
@@ -41,6 +42,12 @@ class User < Activitable
   end
 
   protected
+
+    def password_integrity
+      errors.add(:password, I18n.t('errors.messages.blank')) if password.blank?
+      errors.add(:password, I18n.t('errors.messages.too_short.other', count: 8)) if password && password.length < 8
+      errors.add(:password_confirmation, I18n.t('errors.messages.equal_to', count: 'senha')) if password != password_confirmation
+    end
 
     def all_friends_query(model)
       "(#{model}_type = 'User' AND #{model}_id IN (#{friends.map(&:id).join(',')}))"

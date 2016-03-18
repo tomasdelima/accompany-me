@@ -25,17 +25,17 @@
     <div class="sign-in">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="right">
-          <%= f.label :email, class: '' %>
+          <%= f.label :email, for: :user_email, class: '' %>
           <%= f.email_field :email, autofocus: true, class: '' %>
         </div>
 
         <div class="right">
-          <%= f.label :senha, class: '' %>
+          <%= f.label :senha, for: :user_password, class: '' %>
           <%= f.password_field :password, autocomplete: "off", class: '' %>
         </div>
 
         <div class="right remember-me">
-          <%= f.label :lembrar, class: '' %>
+          <%= f.label :lembrar, for: :user_remember_me, class: '' %>
           <div class="center"><%= f.check_box :remember_me, class: '' %></div>
         </div>
 
