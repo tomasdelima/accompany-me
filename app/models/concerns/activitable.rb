@@ -4,6 +4,10 @@ class Activitable < Accompaniable
   has_many :activities
   belongs_to :user
 
+  def activities
+    Activity.where(activitable_id: id, activitable_type: self.class.to_s.sub('Friend', 'User'))
+  end
+
   def activitable?
     true
   end

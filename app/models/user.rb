@@ -26,19 +26,19 @@ class User < Activitable
   end
 
   def all_activities
-    Activity.where(all_friends_query(:activitable))
+    Activity.where("#{all_user_query(:activitable)} OR #{all_friends_query(:activitable)}")
   end
 
   def all_accompaniments
-    Accompaniment.where("#{all_friends_query(:accompaniable)} OR #{all_activities_query(:accompaniable)}")
+    Accompaniment.where("#{all_user_query(:accompaniable)} OR #{all_friends_query(:accompaniable)} OR #{all_activities_query(:accompaniable)}")
   end
 
   def all_experiences
-    Experience.where("#{all_friends_query(:experienceable)} OR #{all_activities_query(:experienceable)} OR #{all_accompaniments_query(:experienceable)}")
+    Experience.where("#{all_user_query(:experienceable)} OR #{all_friends_query(:experienceable)} OR #{all_activities_query(:experienceable)} OR #{all_accompaniments_query(:experienceable)}")
   end
 
   def all_learnings
-    Learning.where("#{all_friends_query(:learnable)} OR #{all_activities_query(:learnable)} OR #{all_accompaniments_query(:learnable)} OR #{all_experiences_query(:learnable)}")
+    Learning.where("#{all_user_query(:learnable)} OR #{all_friends_query(:learnable)} OR #{all_activities_query(:learnable)} OR #{all_accompaniments_query(:learnable)} OR #{all_experiences_query(:learnable)}")
   end
 
   protected
@@ -47,6 +47,10 @@ class User < Activitable
       errors.add(:password, I18n.t('errors.messages.blank')) if password.blank?
       errors.add(:password, I18n.t('errors.messages.too_short.other', count: 8)) if password && password.length < 8
       errors.add(:password_confirmation, I18n.t('errors.messages.equal_to', count: 'senha')) if password != password_confirmation
+    end
+
+    def all_user_query(model)
+      all_base_query(model, 'User', [self])
     end
 
     def all_friends_query(model)

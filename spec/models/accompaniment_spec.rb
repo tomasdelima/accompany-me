@@ -12,4 +12,12 @@ RSpec.describe Accompaniment, type: :model do
   it { should have_many :learnings }
 
   it { should validate_presence_of :subject }
+
+  let(:accompaniment) { FactoryGirl.create :accompaniment }
+
+  describe '#name' do
+    it 'returns the subject' do
+      expect(accompaniment.name).to eq accompaniment.subject
+    end
+  end
 end

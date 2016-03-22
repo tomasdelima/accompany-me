@@ -9,4 +9,12 @@ RSpec.describe Experience, type: :model do
   it { should belong_to :experienceable }
 
   it { should have_many :learnings }
+
+  let(:experience) { FactoryGirl.create :experience, description: (0..300).reduce{|a,m| m = "#{a}#{m}"} }
+
+  describe '#name' do
+    it 'returns the descriptions first 100 characters' do
+      expect(experience.name.length).to eq 100
+    end
+  end
 end

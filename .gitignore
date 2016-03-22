@@ -1,9 +1,9 @@
 /.bundle
-
+/coverage/
 /db/*.sqlite3
 /db/*.sqlite3-journal
-
 /log/*.log
+/test/
 /tmp
 
 .byebug_history
