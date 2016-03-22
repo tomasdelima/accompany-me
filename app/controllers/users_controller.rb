@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user.signed_up = true
     if @user.save
       sign_in(:user, @user)
       redirect_to root_path
@@ -27,7 +28,11 @@ class UsersController < ApplicationController
   protected
 
     def init_user
-      @object = @user = User.new
+      @object = @user = unsigned_up_friend || User.new
+    end
+
+    def unsigned_up_friend
+      User.find_by(email: user_params[:email], signed_up: [false, nil, ''])
     end
 
     def find_user
