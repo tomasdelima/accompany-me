@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     end
 
     def unsigned_up_friend
-      User.find_by(email: user_params[:email], signed_up: [false, nil, ''])
+      User.find_by(email: user_params[:email], signed_up: [false, nil])
     end
 
     def find_user
