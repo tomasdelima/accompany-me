@@ -1,7 +1,10 @@
 class AbstractModel < ActiveRecord::Base
   self.abstract_class = true
+  before_save :correct_activitable_type
 
-  # belongs_to :learneable
+  def correct_activitable_type
+    self.activitable_type = 'User' if self.activitable_type == 'Friend'
+  end
 
   def activitable?
     false
