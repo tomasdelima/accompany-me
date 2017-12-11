@@ -10,7 +10,7 @@ class Accompaniment < Experienceable
       {name: :subject,            type: :text_field, options: {autofocus: true}},
       {name: :accompaniable_type, type: :hidden_field, options: {}},
       {name: :accompaniable_id,   type: :hidden_field, options: {}},
-      {name: :accompaniable,      type: :text_field, options: {value: accompaniable.try(:name)}, reference: true},
+      {name: :accompaniable,      type: :text_field, options: {value: accompaniable.try(:name), disabled: true}, reference: true},
       {name: :achievements,       type: :text_area,  options: {class: :wysihtml5}},
       {name: :plans,              type: :text_area,  options: {class: :wysihtml5}},
       {name: :observations,       type: :text_area,  options: {class: :wysihtml5}},

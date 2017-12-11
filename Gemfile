@@ -14,7 +14,7 @@ gem 'uglifier'
 gem 'font-awesome-sass'
 gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-datepicker-rails'
-
+gem 'capybara'
 gem 'devise'
 
 group :doc do
@@ -33,6 +33,9 @@ group :test do
   gem 'simplecov', require: false
   gem 'test-unit'
   gem 'minitest'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
 
