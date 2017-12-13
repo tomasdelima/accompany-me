@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322154845) do
+ActiveRecord::Schema.define(version: 20171213010638) do
 
   create_table "accompaniments", force: true do |t|
     t.date     "date_time"
@@ -63,8 +63,10 @@ ActiveRecord::Schema.define(version: 20160322154845) do
     t.integer  "friend_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "contact_id"
   end
 
+  add_index "friendships", ["contact_id"], name: "index_friendships_on_contact_id"
   add_index "friendships", ["friend_id"], name: "index_friendships_on_friend_id"
   add_index "friendships", ["user_id"], name: "index_friendships_on_user_id"
 
@@ -93,6 +95,14 @@ ActiveRecord::Schema.define(version: 20160322154845) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "signed_up"
+    t.string   "phone"
+    t.string   "celphone"
+    t.string   "address"
+    t.string   "name"
+    t.text     "observations"
+    t.date     "birthdate"
+    t.decimal  "age"
+    t.date     "age_changed_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

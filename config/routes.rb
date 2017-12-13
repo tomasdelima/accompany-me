@@ -10,10 +10,12 @@ AccompanyMe::Application.routes.draw do
 
   resources :users
   resources :friends
+  resources :contacts
   resources :activities
   resources :accompaniments
   resources :experiences
   resources :learnings
+  get "contacts/:id/convert" => "contacts#convert"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

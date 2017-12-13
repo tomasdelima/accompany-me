@@ -21,6 +21,7 @@
 
     <%= link_to t("helpers.submit.edit", model: @object.model_name), edit_polymorphic_path(@object), class: "btn btn-primary" %>
     <%= link_to t("helpers.submit.delete", model: t("activerecord.model.#{@object.class.to_s.downcase}")), polymorphic_path(@object), method: :delete, confirm: "Tem certeza? Isto também deletará os acompanhamentos relacionados!", class: "btn btn-danger" %>
+    <%= link_to t("helpers.submit.convert", model: @object.model_name), contact_path(@object) + "/convert", class: "btn btn-primary" if @object.class.to_s == "Contact" %>
   </div>
 </div>
 
