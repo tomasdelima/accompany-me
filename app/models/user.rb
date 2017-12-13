@@ -1,15 +1,24 @@
 class User < Activitable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable
 
-  has_many :friendships
+  has_many :friendships, order: "created_at DESC"
   has_many :friends, through: :friendships
+  has_many :contacts, through: :friendships
 
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   validate :password_integrity
 
   def show_fields
     [
-      {name: :email, type: :text_field, options: {}},
+      {name: :name,           type: :text_field, options: {}},
+      {name: :email,          type: :text_field, options: {}},
+      {name: :phone,          type: :text_field, options: {}},
+      {name: :celphone,       type: :text_field, options: {}},
+      {name: :address,        type: :text_field, options: {}},
+      {name: :observations,   type: :text_area,  options: {}},
+      {name: :birthdate,      type: :text_field, options: {}},
+      {name: :age,            type: :text_field, options: {}},
+      {name: :age_changed_at, type: :text_field, options: {}},
     ]
   end
 
@@ -18,7 +27,7 @@ class User < Activitable
   end
 
   def name
-    email
+    attributes["name"] || email
   end
 
   def todays_activities

@@ -1,7 +1,7 @@
 class FriendsController < ApplicationController
   before_action :authenticate_user!
   before_action :init_friend, only: [:new, :create]
-  before_action :find_friend, only: [:home, :show, :update]
+  before_action :find_friend, only: [:home, :show, :update, :edit]
   before_action :assign_friend_attributes, only: [:create, :update]
 
   def new
@@ -44,6 +44,6 @@ class FriendsController < ApplicationController
     end
 
     def friend_params
-      params.require(:friend).permit(:email)
+      params.require(:friend).permit(:email, :phone, :celphone, :address, :name, :observations, :birthdate, :age, :age_changed_at)
     end
 end
