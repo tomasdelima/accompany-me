@@ -9,48 +9,10 @@
   <link rel="shortcut icon" href="/assets/icon.png"/>
 </head>
 <body>
-
-<div class="navbar">
-  <a href="/" class="navbar-brand">Accompany-me</a>
-
-  <% if current_user %>
-    <div class="box account">
-      <h3 class="welcome">
-        Bem-vindo(a) <%= current_user.email %>
-      </h3>
-      <div class="links">
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-      </div>
-    </div>
-  <% else %>
-    <div class="sign-in">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="right">
-          <%= f.label :email, for: :user_email, class: '' %>
-          <%= f.email_field :email, autofocus: true, class: '' %>
-        </div>
-
-        <div class="right">
-          <%= f.label :senha, for: :user_password, class: '' %>
-          <%= f.password_field :password, autocomplete: "off", class: '' %>
-        </div>
-
-        <div class="right remember-me">
-          <%= f.label :lembrar, for: :user_remember_me, class: '' %>
-          <div class="center"><%= f.check_box :remember_me, class: '' %></div>
-        </div>
-
-        <div class='submit right'><%= f.submit "Entrar" %></div>
-      <% end %>
-
-      <% render "devise/shared/links" %>
-    </div>
-  <% end %>
-</div>
-
-<div class="container <%= content_for :page %>">
-  <%= yield %>
-</div>
-
+  <div id="react-root"/>
+  <script type="text/javascript">
+    var currentUser = <%= (current_user || "").to_json.html_safe %>
+  </script>
+  <%= javascript_pack_tag 'application' %>
 </body>
 </html>

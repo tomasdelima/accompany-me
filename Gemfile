@@ -15,6 +15,7 @@ gem 'font-awesome-sass'
 gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'devise'
+gem 'webpacker'
 
 group :doc do
   gem 'sdoc', require: false
