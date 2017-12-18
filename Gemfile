@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '5.1.4'
 
 gem 'therubyracer'
 gem 'jquery-rails'
@@ -8,13 +8,12 @@ gem 'turbolinks'
 gem 'jbuilder'
 
 gem 'bootstrap-sass'
-gem 'twitter-bootstrap-rails'
+gem 'bootstrap'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'font-awesome-sass'
 gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-datepicker-rails'
-gem 'capybara'
 gem 'devise'
 
 group :doc do

@@ -8,8 +8,9 @@
   <ul class="<%= singular_label %> list expandable-list">
     <% objects.each do |object| %>
       <li>
-        <%= link_to t("helpers.edit"), edit_polymorphic_path(object), class: "inline-edit" %>
-        <%= link_to polymorphic_path(object) do %>
+        < %debugger%>
+        <%= link_to t("helpers.edit"), send("edit_#{@object.class.to_s.downcase}_path", @object), class: "inline-edit" %>
+        <%= link_to send("#{@object.class.to_s.downcase}_path", @object) do %>
          <span class="listed left"><%= object.name %></span>
         <% end %>
       </li>

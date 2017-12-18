@@ -10,7 +10,7 @@
           <span><%= t("activerecord.attributes.#{@object.class.to_s.downcase}.#{field[:name]}") %></span>
           <div>
             <% if field[:reference] %>
-              <%= link_to field[:options][:value], polymorphic_path(@object.send(field[:name])) %>
+              <%= link_to field[:options][:value], send("#{@object.class.to_s.downcase}_path", @object.send(field[:name])) %>
             <% else %>
               <%= @object.send(field[:name]) %>
             <% end %>
@@ -19,8 +19,8 @@
       <% end %>
     </ul>
 
-    <%= link_to t("helpers.submit.edit", model: @object.model_name), edit_polymorphic_path(@object), class: "btn btn-primary" %>
-    <%= link_to t("helpers.submit.delete", model: t("activerecord.model.#{@object.class.to_s.downcase}")), polymorphic_path(@object), method: :delete, confirm: "Tem certeza? Isto também deletará os acompanhamentos relacionados!", class: "btn btn-danger" %>
+    <%= link_to t("helpers.submit.edit", model: @object.model_name), send("edit_#{@object.class.to_s.downcase}_path", @object), class: "btn btn-primary" %>
+    <%= link_to t("helpers.submit.delete", model: t("activerecord.model.#{@object.class.to_s.downcase}")), send("#{@object.class.to_s.downcase}_path", @object), method: :delete, confirm: "Tem certeza? Isto também deletará os acompanhamentos relacionados!", class: "btn btn-danger" %>
     <%= link_to t("helpers.submit.convert", model: @object.model_name), contact_path(@object) + "/convert", class: "btn btn-primary" if @object.class.to_s == "Contact" %>
   </div>
 </div>

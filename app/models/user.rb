@@ -1,7 +1,7 @@
 class User < Activitable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable
 
-  has_many :friendships, order: "created_at DESC"
+  has_many :friendships, -> { order created_at: :desc }
   has_many :friends, through: :friendships
   has_many :contacts, through: :friendships
 
@@ -26,9 +26,9 @@ class User < Activitable
     I18n.t('activerecord.model.user')
   end
 
-  def name
-    attributes["name"] || email
-  end
+  # def name
+  #   attributes["name"] || email
+  # end
 
   def todays_activities
     activities.select {|a| a.next_occurrence == Date.today }
