@@ -20,7 +20,7 @@ class ExperiencesController < ApplicationController
   end
 
   def show
-    @model_name = 'Experience'
+    @class_name = 'Experience'
   end
 
   def edit

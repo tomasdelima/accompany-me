@@ -18,7 +18,7 @@ class AccompanimentsController < ApplicationController
   end
 
   def show
-    @model_name = 'Accompaniment'
+    @class_name = 'Accompaniment'
   end
 
   def edit

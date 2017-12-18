@@ -58,9 +58,9 @@ private
   end
 
   def create_record(model, field)
-    model_name = I18n.t("activerecord.model.#{model}")
+    class_name = I18n.t("activerecord.model.#{model}")
 
-    click_link "Criar #{model_name}"
+    click_link "Criar #{class_name}"
     fill_in "#{model}_#{field}", with: send(model).send(field)
-    click_button "Salvar #{model_name}"
+    click_button "Salvar #{class_name}"
   end

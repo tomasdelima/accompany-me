@@ -8,6 +8,11 @@ AccompanyMe::Application.routes.draw do
   post '/users' => 'users#create'
   devise_for :users
 
+  namespace :api do
+    devise_for :users
+    resources :recipes, only: [:index, :show]
+  end
+
   resources :users
   resources :friends
   resources :contacts

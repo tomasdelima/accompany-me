@@ -2,7 +2,7 @@
 
 <div class="col-md-12">
   <div class="box">
-    <h2>Detalhes de <%= @object.model_name.downcase %></h2>
+    <h2>Detalhes de <%= @object.class_name.downcase %></h2>
 
     <ul class="list details">
       <% @object.show_fields.each do |field| %>
@@ -19,9 +19,9 @@
       <% end %>
     </ul>
 
-    <%= link_to t("helpers.submit.edit", model: @object.model_name), send("edit_#{@object.class.to_s.downcase}_path", @object), class: "btn btn-primary" %>
+    <%= link_to t("helpers.submit.edit", model: @object.class_name), send("edit_#{@object.class.to_s.downcase}_path", @object), class: "btn btn-primary" %>
     <%= link_to t("helpers.submit.delete", model: t("activerecord.model.#{@object.class.to_s.downcase}")), send("#{@object.class.to_s.downcase}_path", @object), method: :delete, confirm: "Tem certeza? Isto também deletará os acompanhamentos relacionados!", class: "btn btn-danger" %>
-    <%= link_to t("helpers.submit.convert", model: @object.model_name), contact_path(@object) + "/convert", class: "btn btn-primary" if @object.class.to_s == "Contact" %>
+    <%= link_to t("helpers.submit.convert", model: @object.class_name), contact_path(@object) + "/convert", class: "btn btn-primary" if @object.class.to_s == "Contact" %>
   </div>
 </div>
 

@@ -26,11 +26,11 @@ RSpec.describe AbstractModel do
     end
   end
 
-  describe '#model_name' do
+  describe '#class_name' do
     it 'returns the translated model name' do
       objects.each do |object|
-        expect(object).to respond_to :model_name
-        expect(object.model_name).to be_present
+        expect(object).to respond_to :class_name
+        expect(object.class_name).to be_present
       end
     end
   end

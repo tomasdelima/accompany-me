@@ -15,7 +15,7 @@ class Learning < AbstractModel
     ]
   end
 
-  def model_name
+  def class_name
     I18n.t('activerecord.model.learning')
   end
 end

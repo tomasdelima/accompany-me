@@ -19,7 +19,7 @@ class Accompaniment < Experienceable
     ]
   end
 
-  def model_name
+  def class_name
     I18n.t('activerecord.model.accompaniment')
   end
 end

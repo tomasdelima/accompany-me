@@ -23,7 +23,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @model_name = 'Activity'
+    @class_name = 'Activity'
   end
 
   def edit

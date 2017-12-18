@@ -1,9 +1,10 @@
 import React from 'react'
-import View from './view'
+import Text from './text'
 import s from 'react-quick-styles'
 
 export default class Link extends React.Component {
   render () {
-    return <a href={this.props.href} style={(this.props.style || []).merge()} data-method={this.props.method}>{this.props.children || this.props.href}</a>
+    var style = this.props.style || []
+    return <Text style={[this.props.style.merge()].merge()} data-method={this.props.method}>{this.props.children}</Text>
   }
 }

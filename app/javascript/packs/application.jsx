@@ -11,40 +11,19 @@ import createBrowserHistory from 'history/createBrowserHistory'
 import Page from './page'
 import SignInPage from './sign-in-page'
 
-const getConfig = initReactDevise({
-  // clientResourceName: 'users',
-  apiResourceName: 'users',
-  // apiHost: 'http://auth.example.com',
-  // defaultViewPluginSettings: myDefaultViewPluginSettings,
-  // viewPlugins: myPlugins,
-  // messages: customMessages,
-  routes: {
-    signup: {
-      path: '/signup-for-fun-and-profit'
-    }
-  }
-})
 
 const store = createStore(
   combineReducers({
+    a: () => 1,
     // ...reducers,
-    ...reactDeviseReducers
   })
 )
 
-function authorize () {
-  return {
-    authorized: currentUser,
-  }
-}
-
-        // <Route exact path="/users/login" component={SignInPage} />
 render(
   <Provider store={store}>
     <Router history={createBrowserHistory()}>
       <Switch>
-        <PrivateRoute exact path="/" component={Page} authorize={authorize} />
-        {authRoutes()}
+        <Route exact path="/" component={Page} />
       </Switch>
     </Router>
   </Provider>,
