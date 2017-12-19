@@ -1,11 +1,18 @@
 import React from 'react'
+import FacebookLogin from 'react-facebook-login'
+import s from 'react-quick-styles'
+
+import Stateful from '../stateful'
 import Item from './item'
 import View from './view'
 import Text from './text'
 import Link from './link'
-import s from 'react-quick-styles'
 
-export default class List extends React.Component {
+export default class TopBar extends Stateful {
+  getInitialState () {
+    return {}
+  }
+
   render () {
     var style = this.props.style || {}
 

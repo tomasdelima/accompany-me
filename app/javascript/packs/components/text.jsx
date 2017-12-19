@@ -7,7 +7,7 @@ export default class Text extends React.Component {
 
     return React.createElement(
       this.props.type || 'span',
-      {...this.props, style: [s.flex, s.center2, style].merge()},
+      {...this.props, style: [s.flex, s.center2].concat(style).merge()},
       this.props.children || this.props.href
     )
   }

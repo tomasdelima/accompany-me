@@ -8,7 +8,7 @@ import {createStore, combineReducers} from 'redux'
 import reactDeviseReducers from 'react-devise/lib/reducers'
 import createBrowserHistory from 'history/createBrowserHistory'
 
-import Page from './components/page'
+import Page from './page'
 // import SignInPage from './sign-in-page'
 
 
@@ -19,7 +19,17 @@ const store = createStore(
       default: return 'logged-out'
     }
   }
+  // combineReducers({
+  //   a: () => 1,
+  //   // ...reducers,
+  // })
 )
+
+
+
+// store.dispatch({ type: '' })
+// store.dispatch({ type: 'FBLogin' })
+// store.dispatch({ type: '' })
 
 render(
   <Provider store={store}>
@@ -31,3 +41,20 @@ render(
   </Provider>,
   document.getElementById('react-root')
 )
+
+setTimeout(() => {
+  store.dispatch({ type: 'FBLogin' })
+  console.log(store.getState())
+  setTimeout(() => {
+    store.dispatch({ type: '' })
+    console.log(store.getState())
+    setTimeout(() => {
+      store.dispatch({ type: 'FBLogin' })
+      console.log(store.getState())
+      setTimeout(() => {
+        store.dispatch({ type: '' })
+        console.log(store.getState())
+      }, 1000)
+    }, 1000)
+  }, 1000)
+}, 1000)

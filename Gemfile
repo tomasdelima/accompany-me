@@ -24,6 +24,7 @@ end
 group :test, :development do
   gem 'byebug'
   gem 'sqlite3'
+  gem 'localtunnel' # Test the app on local network: lt -p 3000 -s accompanyme
 end
 
 group :test do
