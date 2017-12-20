@@ -53,7 +53,6 @@ class User < Activitable
   protected
 
     def password_integrity
-      errors.add(:password, I18n.t('errors.messages.blank')) if password.blank?
       errors.add(:password, I18n.t('errors.messages.too_short.other', count: 8)) if password && password.length < 8
       errors.add(:password_confirmation, I18n.t('errors.messages.equal_to', count: 'senha')) if password != password_confirmation
     end

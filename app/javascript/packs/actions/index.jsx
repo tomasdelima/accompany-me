@@ -4,3 +4,10 @@ export const setUser = (user) => {
     user
   }
 }
+
+export const setData = (data) => {
+  return {
+    type: 'SET_DATA',
+    data
+  }
+}

@@ -1,10 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import FacebookLogin from 'react-facebook-login'
-import s from 'react-quick-styles'
 
-import { setUser } from '../actions'
-import Page from '../components/page'
+import { setUser, setData } from '../actions'
 import LoginData from '../components/login-data'
 
 const mapStateToProps = (state) => {
@@ -13,7 +11,19 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLogin: (user) => dispatch(setUser(user)),
+    onLogin: (user) => {
+      fetch('api/users', {
+        method: 'POST',
+        headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          email: user.email,
+          facebookId: user.id,
+        }),
+      }).then((data) => data.json()).then((data) => {
+        dispatch(setUser(user))
+        dispatch(setData(data))
+      })
+    },
     onFailure: () => console.log('fail')
   }
 }
