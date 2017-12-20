@@ -7,6 +7,7 @@ import Item from './item'
 import View from './view'
 import Text from './text'
 import Link from './link'
+import Login from '../containers/login'
 
 export default class TopBar extends Stateful {
   getInitialState () {
@@ -20,7 +21,7 @@ export default class TopBar extends Stateful {
       <Link href="/" style={[s.size(25), s.padding(0, 15), s.white, s.noDecoration]}>Accompany-me</Link>
 
       <View if={currentUser.email} style={[s.flex]}>
-        <Text style={[s.white, s.padding(0, 10)]}>{currentUser.email}</Text>
+        <Login/>
         <Link href="/users/sign_out" style={[s.white, s.padding(0, 10)]} method="delete">Sair</Link>
       </View>
     </View>
